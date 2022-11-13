@@ -1,7 +1,7 @@
 import Modal from 'react-bootstrap/Modal';
 import check from '../image/check.png';
 
-function PopupSuccess({ show, onHide }) {
+function ModalHowTo({ show, onHide }) {
     const propSimulator = { onHide, show };
     const colse = () => {
         window.location.href = '/';
@@ -37,4 +37,4 @@ function PopupSuccess({ show, onHide }) {
     );
     
 }
-export default PopupSuccess;
+export default ModalHowTo;

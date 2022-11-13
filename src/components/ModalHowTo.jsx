@@ -1,6 +1,6 @@
 import Modal from 'react-bootstrap/Modal';
 
-function PopupHowTo({ show, onHide }) {
+function ModalHowTo({ show, onHide }) {
     const propSimulator = { onHide, show };
 
     return(
@@ -15,4 +15,4 @@ function PopupHowTo({ show, onHide }) {
     );
     
 }
-export default PopupHowTo;
+export default ModalHowTo;

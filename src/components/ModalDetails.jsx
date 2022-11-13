@@ -1,7 +1,7 @@
 import Modal from 'react-bootstrap/Modal';
 import viking from '../image/viking.jpg';
 
-function PopupSuccess({ show, onHide }) {
+function ModalDetails({ show, onHide }) {
     const propSimulator = { onHide, show };
     const colse = () => {
         window.location.href = '/';
@@ -38,4 +38,4 @@ function PopupSuccess({ show, onHide }) {
     );
     
 }
-export default PopupSuccess;
+export default ModalDetails;
