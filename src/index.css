@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.login-page{
+  background: linear-gradient(180deg, #F4D3C7 0%, #E7D6CC 52.74%, #F6F0E7 100%);
+  height: 100vh;
+
+}
+.login-bg{
+  width: 35%;
+  background: rgba(252, 243, 243, 0.5);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+.btnLogin {
+  background-color: #A5BBCA;
+  color: white;
+}
