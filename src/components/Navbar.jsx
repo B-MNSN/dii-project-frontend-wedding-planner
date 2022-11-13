@@ -1,7 +1,10 @@
 import logo from "../image/logo_cusu.png";
 import { HiOutlineUserCircle } from "react-icons/hi";
+import { useState } from "react";
+import Modal from "./ModalDetails";
 
 function Navbar() {
+  const [modalShow, setModalShow] = useState(false);
   return (
     <>
       <div className="shadow">
@@ -14,15 +17,17 @@ function Navbar() {
             <a href="/" className="mx-3 text-dark text-decoration-none">
               WEDDING PLANNER
             </a>
-            <a href="/" className="mx-3 text-dark text-decoration-none">
+            <text className="mx-3 text-dark" onClick={() => setModalShow(true)}>
               HOW TO
-            </a>
+            </text>
           </div>
           <div>
             <HiOutlineUserCircle size={"30"} />
           </div>
         </div>
       </div>
+
+      <Modal show={modalShow} onHide={() => setModalShow(false)}/>
     </>
   );
 }
