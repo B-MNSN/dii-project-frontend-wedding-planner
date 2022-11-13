@@ -1,13 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import Login from './pages/Login';
-// import Navbar from './components/Navbar';
+import Register from './pages/Register';
 
 function App() {
   return (
     <>
-      {/* <Navbar/> */}
-      <Login/>
+      <Register/>
     </>
   );
 }
