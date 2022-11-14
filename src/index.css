@@ -27,3 +27,17 @@ code {
   background-color: #A5BBCA;
   color: white;
 }
+.btnCancel {
+  background-color: #F88379;
+}
+.btnConfirm {
+  background-color: #8A9AA0;
+}
+.menulist{
+  display: block;
+  cursor: pointer;
+
+}
+.menulist:hover {
+  background-color: #A5BBCA;
+}
