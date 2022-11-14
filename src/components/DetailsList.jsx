@@ -1,6 +1,10 @@
 import check from '../image/check.png';
+import { useState } from "react";
+import Modal from "../components/ModalDetails";
 
 function DetailList() {
+    const [modalShow, setModalShow] = useState(false);
+
     return(
         <>
             <div className="border bg-secondary rounded-2 bg-opacity-10 ms-3 w-75 ">
@@ -12,12 +16,13 @@ function DetailList() {
                         <div className='bg-secondary rounded-2 d-flex justify-content-center'>
                             <img src={check} alt='check' width={150} className='img-fluid'/>
                         </div>
-                        <div className='d-flex justify-content-center mt-2'>
+                        <div className='d-flex justify-content-center mt-2' onClick={() => setModalShow(true)}>
                             <p>name</p>
                         </div>
                     </div>
                 </div>
             </div>
+            <Modal show={modalShow} onHide={() => setModalShow(false)}/>
         </>
     );
     
