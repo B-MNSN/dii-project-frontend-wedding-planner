@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Addcard from './admin/Addcard';
+import Addcard from './admin/Add/Addcard';
 import Adddress from './admin/Adddress';
 import Addfood from './admin/Addfood';
 import Addgift from './admin/Addgift';
@@ -20,8 +20,8 @@ function App() {
     {/* <Addphoto/> */}
     {/* <Addcard/> */}
     {/* <Addgift/> */}
-    <Addorganize/>
-    {/* <Addlocation/> */}
+    {/* <Addorganize/> */}
+    <Addlocation/>
     </>
   );
 }
