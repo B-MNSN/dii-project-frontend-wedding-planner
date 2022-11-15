@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import WeddingPlanner from './pages/WeddingPlanner';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import MyWDP from './pages/MyWDP';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/wedding_planner' element={<WeddingPlanner/>}/>
+        <Route path='/my_wedding_planner' element={<MyWDP/>}/>
       </Routes>
       
     </>

@@ -1,9 +1,12 @@
 import check from '../image/check.png';
 import { useState } from "react";
-import Modal from "../components/ModalDetails";
+import Modal from '../components/ModalDetails';
 
 function DetailList() {
     const [modalShow, setModalShow] = useState(false);
+    const confirm = () => {
+        window.location.href = '/my_wedding_planner';
+    }
 
     return(
         <>
@@ -20,6 +23,10 @@ function DetailList() {
                             <p>name</p>
                         </div>
                     </div>
+                </div>
+                <div className='d-flex justify-content-end mt-5 me-5'>
+                    <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1'>Skip</button>
+                    <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1' onClick={confirm}>Next</button>
                 </div>
             </div>
             <Modal show={modalShow} onHide={() => setModalShow(false)}/>

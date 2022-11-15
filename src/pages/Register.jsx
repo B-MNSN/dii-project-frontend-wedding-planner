@@ -1,7 +1,32 @@
 import logo from "../image/logo_cusu.png";
 import Form from "react-bootstrap/Form";
+import axios, { AxiosError } from "axios";
+import { useEffect, useState } from "react";
 
 function Register() {
+  const [email, setEmail] = useState([]);
+  const [password, setPassword] = useState([]);
+  const [confirmPassword, setConfirmPassword] = useState([]);
+
+  const onSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const start = await axios.post("http://localhost:4001/register", {
+        email,
+        password,
+      });
+      console.log(start);
+      localStorage.setItem("status", JSON.stringify(start.data.token));
+      // setToken(JSON.parse(localStorage.getItem("status")));
+      window.location.href = "/home";
+    } catch (error) {
+      console.error(error);
+      if (error instanceof AxiosError) {
+        console.error(error.message);
+      }
+    }
+  };
+
   return (
     <>
       <div className="register-page d-flex align-items-center justify-content-center">
@@ -10,7 +35,7 @@ function Register() {
             <img src={logo} alt="logo" className="logo mt-3" width={300} />
           </div>
           <div className="register-bg col mt-3 rounded-3">
-            <Form className="m-5">
+            <Form className="m-5" onSubmit={onSubmit}>
               <h3 className="fs-3 mb-3 fw-bolder">Create to your account</h3>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>User name</Form.Label>

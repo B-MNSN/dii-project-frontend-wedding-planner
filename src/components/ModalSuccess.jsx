@@ -6,6 +6,9 @@ function ModalHowTo({ show, onHide }) {
     const colse = () => {
         window.location.href = '/';
     }
+    const confirm = () => {
+        window.location.href = '/';
+    }
 
     return(
         <>
@@ -27,12 +30,13 @@ function ModalHowTo({ show, onHide }) {
                         </div>
                         <div className='col d-flex justify-content-center mt-3'>
                             <button className='btnCancel border-0 rounded-2 text-light m-2 px-4 py-1' onClick={colse}>Cancel</button>
-                            <button className='btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1'>Confirm</button>
+                            <button className='btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1' onClick={confirm}>Confirm</button>
                         </div>
                         
                     </div>
                 </Modal.Body>
             </Modal>
+            
         </>
     );
     

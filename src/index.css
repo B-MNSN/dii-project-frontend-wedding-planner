@@ -33,6 +33,12 @@ code {
 .btnConfirm {
   background-color: #8A9AA0;
 }
+.btnSkip {
+  background-color: #E7D6CC;
+}
+.btnNext {
+  background-color: #A5BBCA;
+}
 .menulist{
   display: block;
   cursor: pointer;
