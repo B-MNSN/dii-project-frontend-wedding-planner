@@ -8,7 +8,7 @@ export default function Addtheme({ className }) {
         <div className={className}>
             <div class=" background container-fluid text-center col-12">
                 <img src={logo} class="middle-logo col-4" alt="..." />
-                <div class="box-add container justify-content-center shadow-sm p-2 mb-5 bg-body rounded ">
+                <div class="box-add container justify-content-center shadow-sm p-2 mb-5  rounded ">
                     <h3 class=" py-3 fw-bolder d-flex justify-content-center ">ธีม</h3>
                     <div class="border-top border-4 border-dark "></div>
 
