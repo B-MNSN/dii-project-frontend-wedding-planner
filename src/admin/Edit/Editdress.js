@@ -21,7 +21,7 @@ export default function Editdress({ className }) {
                             </div>
                             <div class="form-outline m-4 d-flex justify-content-end">
                                 <textarea class="form-control" id="textAreaExample" rows="4" placeholder='รายละเอียด-ชุดแต่งงาน'></textarea>
-                            </div>
+                            </div> 
 
                             <div class="m-4 d-flex justify-content-end">
                                 <input type="text" class="  form-control q-text container-fluid " placeholder='ราคา-ชุดแต่งงาน' id='title' required></input>

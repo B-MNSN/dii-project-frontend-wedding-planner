@@ -1,5 +1,5 @@
 import React from "react"
-import logo from "../image/logo_cusu.png";
+import logo from "../../image/logo_cusu.png";
 import { BiImageAdd } from "react-icons/bi";
 
 export default function Edittheme({ className }) {
