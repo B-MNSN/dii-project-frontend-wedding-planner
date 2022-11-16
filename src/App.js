@@ -13,14 +13,13 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Login />} />
-      {/* <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/wedding_planner' element={<WeddingPlanner/>}/>
         <Route path='/my_wedding_planner' element={<MyWDP/>}/>
-      </Routes> */}
+      </Routes>
       
       <Addtheme/>
     </>
