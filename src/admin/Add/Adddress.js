@@ -9,7 +9,7 @@ export default function Adddress({ className }) {
             <div class=" background container-fluid text-center col-12">
                 <img src={logo} class="middle-logo col-4" alt="..." />
                 <div class="box-add container justify-content-center shadow-sm p-2 mb-5 rounded ">
-                    <h3 class=" py-3 fw-bolder d-flex justify-content-center ">อาหาร-เครื่องดื่ม</h3>
+                    <h3 class=" py-3 fw-bolder d-flex justify-content-center ">ชุดแต่งงาน</h3>
                     <div class="border-top border-4 border-dark "></div>
 
                     <div class="col-12 d-flex justify-content-center">

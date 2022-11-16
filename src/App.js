@@ -9,6 +9,13 @@ import Addphoto from './admin/Add/Addphoto';
 import Addtheme from './admin/Add/Addtheme';
 import Adminbar from './admin/Adminbar';
 import Edittheme from './admin/Edit/Editthem';
+import Edittfood from './admin/Edit/Editfood';
+import Editdress from './admin/Edit/Editdress';
+import Editphoto from './admin/Edit/Editphoto';
+import Editgift from './admin/Edit/Editgift';
+import Editlocation from './admin/Edit/Editlocation';
+import Editcard from './admin/Edit/Editcard';
+import Editorganize from './admin/Edit/Editorganize';
 
 
 function App() {
@@ -24,6 +31,15 @@ function App() {
     {/* <Addorganize/> */}
     {/* <Addlocation/> */}
     {/* <Edittheme/> */}
+    {/* <Edittfood/> */}
+    {/* <Editdress/> */}
+    {/* <Editphoto/> */}
+    {/* <Editgift/> */}
+    {/* <Editlocation/> */}
+    {/* <Editcard/> */}
+    <Editorganize/>
+    
+
     
     </>
   );
