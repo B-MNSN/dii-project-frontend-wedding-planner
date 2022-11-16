@@ -1,46 +1,26 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Addcard from './admin/Add/Addcard';
-import Adddress from './admin/Add/Adddress';
-import Addfood from './admin/Add/Addfood';
-import Addgift from './admin/Add/Addgift';
-import Addlocation from './admin/Add/Addlocation';
-import Addorganize from './admin/Add/Addorganize';
-import Addphoto from './admin/Add/Addphoto';
+import { Route, Routes } from 'react-router-dom';
+import './index.css';
+import Home from './pages/Home';
+import WeddingPlanner from './pages/WeddingPlanner';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import MyWDP from './pages/MyWDP';
 import Addtheme from './admin/Add/Addtheme';
-import Adminbar from './admin/Adminbar';
-import Edittheme from './admin/Edit/Editthem';
-import Edittfood from './admin/Edit/Editfood';
-import Editdress from './admin/Edit/Editdress';
-import Editphoto from './admin/Edit/Editphoto';
-import Editgift from './admin/Edit/Editgift';
-import Editlocation from './admin/Edit/Editlocation';
-import Editcard from './admin/Edit/Editcard';
-import Editorganize from './admin/Edit/Editorganize';
-
 
 function App() {
   return (
     <>
-    {/* <Adminbar/> */}
-    {/* <Addtheme/> */}
-    {/* <Addfood/> */}
-    {/* <Adddress/> */}
-    {/* <Addphoto/> */}
-    {/* <Addcard/> */}
-    {/* <Addgift/> */}
-    {/* <Addorganize/> */}
-    {/* <Addlocation/> */}
-    {/* <Edittheme/> */}
-    {/* <Edittfood/> */}
-    {/* <Editdress/> */}
-    {/* <Editphoto/> */}
-    {/* <Editgift/> */}
-    {/* <Editlocation/> */}
-    {/* <Editcard/> */}
-    <Editorganize/>
-    
-
-    
+      {/* <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/wedding_planner' element={<WeddingPlanner/>}/>
+        <Route path='/my_wedding_planner' element={<MyWDP/>}/>
+      </Routes> */}
+      
+      <Addtheme/>
     </>
   );
 }

@@ -1,7 +1,10 @@
 import Modal from 'react-bootstrap/Modal';
 import check from '../image/check.png';
+import { useState } from "react";
+import ModalSuccess from '../components/ModalSuccess';
 
 function ModalOrganize({ show, onHide }) {
+    const [modalShow, setModalShow] = useState(false);
     const propSimulator = { onHide, show };
     const colse = () => {
         window.location.href = '/';
@@ -30,12 +33,13 @@ function ModalOrganize({ show, onHide }) {
                         </div>
                         <div className='col d-flex justify-content-center mt-3'>
                             <button className='btnCancel border-0 rounded-2 text-light m-2 px-4 py-1' onClick={colse}>Cancel</button>
-                            <button className='btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1'>Confirm</button>
+                            <button className='btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1' onClick={() => setModalShow(true)}>Confirm</button>
                         </div>
                         
                     </div>
                 </Modal.Body>
             </Modal>
+            <ModalSuccess show={modalShow} onHide={() => setModalShow(false)}/>
         </>
     );
     

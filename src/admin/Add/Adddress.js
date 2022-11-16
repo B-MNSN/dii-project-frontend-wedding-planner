@@ -27,8 +27,8 @@ export default function Adddress({ className }) {
                                 <input type="text" class="  form-control q-text container-fluid " placeholder='ราคา-ชุดแต่งงาน' id='title' required></input>
                             </div>
                             <div class="d-flex m-4 d-flex justify-content-end">
-                                <button type="button" class="btn btn-success btn-lg me-1">Confirm</button>
-                                <button type="button" class="btn btn-danger btn-lg me-1">Cancel</button>
+                            <button type="button" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Confirm</button>
+                                <button type="button" class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button>
                             </div>
 
                         </div>
