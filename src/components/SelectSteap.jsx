@@ -14,9 +14,8 @@ function SelectStep() {
                     </div>
                     <div className="col mt-4">
                         <ul className="p-0">
-                            <li className="menulist rounded-4 ps-4 py-2">
-                            ธีม
-                            </li>
+                            <li className="menulist rounded-4 ps-4 py-2">แขก</li>
+                            <li className="menulist rounded-4 ps-4 py-2">ธีม</li>
                             <li className="menulist rounded-4 ps-4 py-2">งานเช้า/งานเย็น</li>
                             <li className="menulist rounded-4 ps-4 py-2" onClick={() => setOpen(!open)} aria-controls="example-collapse-text" >อาหาร</li>
                             <Collapse in={open}>
@@ -36,7 +35,6 @@ function SelectStep() {
                             <li className="menulist rounded-4 ps-4 py-2">ถ่ายรูป Pre-wedding</li>
                             <li className="menulist rounded-4 ps-4 py-2">การ์ดแต่งงาน</li>
                             <li className="menulist rounded-4 ps-4 py-2">ของชำร่วย</li>
-                            <li className="menulist rounded-4 ps-4 py-2" disabled>แขก</li>
                         </ul>
                     </div>
                 </div>
