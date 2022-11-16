@@ -4,21 +4,28 @@ import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 
 function Register() {
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
-  const [confirmPassword, setConfirmPassword] = useState([]);
+
+  const [user_name, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  // useEffect(() => {
+  //   if(password === confirmPassword) window.location.href = "/login";
+  // }, [password, confirmPassword]);
 
   const onSubmit = async (e) => {
     try {
       e.preventDefault();
-      const start = await axios.post("http://localhost:4001/register", {
+      const regis = await axios.post("http://localhost:4001/register", {
+        user_name,
         email,
         password,
       });
-      console.log(start);
-      localStorage.setItem("status", JSON.stringify(start.data.token));
-      // setToken(JSON.parse(localStorage.getItem("status")));
-      window.location.href = "/home";
+      console.log(regis);
+      localStorage.setItem("status", JSON.stringify(regis.data.status));
+      // setStatus(JSON.parse(localStorage.getItem("status")));
+      // window.location.href = "/login";
     } catch (error) {
       console.error(error);
       if (error instanceof AxiosError) {
@@ -39,19 +46,19 @@ function Register() {
               <h3 className="fs-3 mb-3 fw-bolder">Create to your account</h3>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>User name</Form.Label>
-                <Form.Control type="text" placeholder="Enter User name" />
+                <Form.Control type="text" placeholder="Enter User name" onChange={(event) => setUserName(event.target.value)}/>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter Email" />
+                <Form.Control type="email" placeholder="Enter Email" onChange={(event) => setEmail(event.target.value)}/>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)}/>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Confirm Password</Form.Label>
-                <Form.Control type="password" placeholder="Confirm Password" />
+                <Form.Control type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)}/>
               </Form.Group>
               <div className="d-flex justify-content-center">
                 <button className="btnRegister border-0 rounded-2 w-50 py-2 fw-bold" type="submit">Confirm</button>
