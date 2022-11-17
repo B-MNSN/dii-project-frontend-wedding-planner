@@ -1,17 +1,20 @@
 import Modal from 'react-bootstrap/Modal';
 import viking from '../image/viking.jpg';
 
-function ModalDetails({ show, onHide }) {
+function ModalDetails({ show, onHide, foods }) {
     const propSimulator = { onHide, show };
     const colse = () => {
         window.location.href = '/';
-    }
+    };
+    console.log(foods);
+
+    if(!foods) return <><div>loading</div></>
 
     return(
         <>
             <Modal {...propSimulator} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title className='ms-4'>ธีม:ไวกิ้ง</Modal.Title>
+                    <Modal.Title className='ms-4'>อาหาร</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='row mx-5'>
@@ -22,8 +25,8 @@ function ModalDetails({ show, onHide }) {
                         </div>
                         <div className='col-12 d-flex justify-content-center mt-4'> 
                             <div>
-                                <p><strong>รายละเอียดธีม:</strong>  <br/>จัดพิธีแต่งงานตามฉบับชาวไวกิ้ง ซึ่งมีอายุเกาแก่ 1,000 ปี โดยมีการสร้างเรือยาวแบบพิเศษและย่างหมูป่าตามธรรมเนียมโบราณ งานวิวาห์ย้อนอดีต <br/></p>
-                                <p><strong>ราคา:</strong> xxx,xxx - xxx,xxx บาท</p>
+                                <p><strong>รายละเอียดธีม:</strong> {foods.food_description}</p>
+                                <p><strong>ราคา:</strong> {foods.food_price} บาท</p>
                             </div>
                         </div>
                         <div className='col d-flex justify-content-center mt-3'>
