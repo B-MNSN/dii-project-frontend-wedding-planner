@@ -22,6 +22,7 @@ function App() {
   return (
     <>
       <Routes>
+        {/* <Route path='/' element={<Login />} /> */}
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
@@ -38,8 +39,6 @@ function App() {
         <Route path='/Addgift' element={<Addgift/>}/>
         <Route path='/Addorganize' element={<Addorganize/>}/>
       </Routes>
-      
-     
     </>
   );
 }

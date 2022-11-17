@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 function Login() {
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
-  const [token, setToken] = useState(localStorage.getItem("status"));
+  const [token, setToken] = useState("");
 
   const handChange = (fn) => {
     return (event) => {
@@ -15,7 +15,8 @@ function Login() {
   };
 
   useEffect(() => {
-    if (token) window.location.href = "/home";
+    if (!token) return
+    window.location.href = "/home";
   }, [token]);
 
   const onSubmit = async (e) => {
