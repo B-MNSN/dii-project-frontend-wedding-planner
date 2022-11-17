@@ -7,7 +7,7 @@ export default function Addcard({ className }) {
     const [card_name, setCardName] = useState('');
     const [card_description, setCardDescription] = useState('');
     const [card_price, setCardPrice] = useState('');
-    
+
     const handChange = (fn) => {
         return (event) => {
             fn(event.target.value);
@@ -16,22 +16,22 @@ export default function Addcard({ className }) {
 
     const onSubmit = async (e) => {
         try {
-          e.preventDefault();
-          const addCard = await axios.post("http://localhost:4001/card", {
-            card_name,
-            card_description,
-            card_price
-          });
-          console.log(addCard);
-          localStorage.setItem("status", JSON.stringify(addCard.data.status));
+            e.preventDefault();
+            const addCard = await axios.post("http://localhost:4001/card", {
+                card_name,
+                card_description,
+                card_price
+            });
+            console.log(addCard);
+            localStorage.setItem("status", JSON.stringify(addCard.data.status));
 
         } catch (error) {
-          console.error(error);
-          if (error instanceof AxiosError) {
-            console.error(error.message);
-          }
+            console.error(error);
+            if (error instanceof AxiosError) {
+                console.error(error.message);
+            }
         }
-      };
+    };
 
     return (
         <div className={className}>
@@ -56,8 +56,9 @@ export default function Addcard({ className }) {
                                 <input type="text" class="  form-control q-text container-fluid " placeholder='ราคา-การ์ดแต่งงาน' id='title' value={card_price} onChange={handChange(setCardPrice)}></input>
                             </div>
                             <div class="d-flex m-4 d-flex justify-content-end">
-                                <button type="submit" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Confirm</button>
                                 <button type="button" class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button>
+                                <button type="submit" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Confirm</button>
+
                             </div>
 
                         </div>

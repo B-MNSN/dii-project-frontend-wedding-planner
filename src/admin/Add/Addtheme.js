@@ -18,23 +18,23 @@ export default function Addtheme({ className }) {
 
     const onSubmit = async (e) => {
         try {
-          e.preventDefault();
-          const addTheme = await axios.post("http://localhost:4001/theme", {
-            theme_img,
-            theme_name,
-            theme_description,
-            theme_price,
-          });
-          console.log(addTheme);
-          localStorage.setItem("status", JSON.stringify(addTheme.data.status));
+            e.preventDefault();
+            const addTheme = await axios.post("http://localhost:4001/theme", {
+                theme_img,
+                theme_name,
+                theme_description,
+                theme_price,
+            });
+            console.log(addTheme);
+            localStorage.setItem("status", JSON.stringify(addTheme.data.status));
 
         } catch (error) {
-          console.error(error);
-          if (error instanceof AxiosError) {
-            console.error(error.message);
-          }
+            console.error(error);
+            if (error instanceof AxiosError) {
+                console.error(error.message);
+            }
         }
-      };
+    };
 
     return (
         <div className={className}>
@@ -60,8 +60,9 @@ export default function Addtheme({ className }) {
                                 <input type="text" class="  form-control q-text container-fluid " placeholder='ราคา-ธีม' id='title' value={theme_price} onChange={handChange(setThemePrice)}></input>
                             </div>
                             <div class="d-flex m-4 d-flex justify-content-end">
-                                <button type="submit" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Confirm</button>
                                 <button type="button" class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button>
+                                <button type="submit" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Confirm</button>
+
                             </div>
 
                         </div>

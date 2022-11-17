@@ -56,8 +56,9 @@ export default function Addphoto({ className }) {
                                 <input type="text" class="  form-control q-text container-fluid " placeholder='ราคา-เซ็ตถ่ายรูป' id='title' value={photo_price} onChange={handChange(setPhotoPrice)}></input>
                             </div>
                             <div class="d-flex m-4 d-flex justify-content-end">
+                            <button type="button" class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button>
                                 <button type="submit" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Confirm</button>
-                                <button type="button" class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button>
+                                
                             </div>
 
                         </div>
