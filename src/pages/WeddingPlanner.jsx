@@ -1,4 +1,3 @@
-import DetailList from "../components/DetailsFoods";
 import Navbar from "../components/Navbar";
 import SelectStep from "../components/SelectSteap";
 import { useState } from "react";
@@ -22,7 +21,7 @@ function WeddingPlanner() {
     return(
         <>
             <Navbar/>
-            <div className="d-flex justify-content-center mt-5 mx-5">
+            <div className="d-flex justify-content-center mt-5 mx-5 row">
                 <SelectStep/>
                 <DetailsFoods foods={foods}/>
             </div>

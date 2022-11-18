@@ -7,7 +7,7 @@ function SelectStep() {
 
     return(
         <>
-            <div className="border bg-secondary rounded-2 bg-opacity-10 ">
+            <div className="border bg-secondary rounded-2 bg-opacity-10 col-md-4">
                 <div className="row m-4">
                     <div className="col-12 d-flex justify-content-center">
                         <h4>User name</h4>

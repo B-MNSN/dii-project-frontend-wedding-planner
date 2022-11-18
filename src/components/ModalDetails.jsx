@@ -8,13 +8,13 @@ function ModalDetails({ show, onHide, foods }) {
     };
     console.log(foods);
 
-    if(!foods) return <><div>loading</div></>
+    if(!foods) return <></>
 
     return(
         <>
             <Modal {...propSimulator} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title className='ms-4'>อาหาร</Modal.Title>
+                    <Modal.Title className='ms-4'>{foods.food_name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='row mx-5'>
