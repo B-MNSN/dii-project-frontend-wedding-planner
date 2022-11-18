@@ -23,7 +23,7 @@ export default function Editorganize({ className }) {
                                 <textarea class="form-control" id="textAreaExample" rows="4" placeholder='รายละเอียด-องค์กร-บริษัท'></textarea>
                             </div>
                             <div class="d-flex m-4 d-flex justify-content-end">
-                            <button type="button" class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button>
+                                <button type="button" class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button>
                                 <button type="submit" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Confirm</button>
                             </div>
 
