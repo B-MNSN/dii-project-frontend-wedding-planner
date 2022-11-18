@@ -1,12 +1,11 @@
 import Modal from 'react-bootstrap/Modal';
-import viking from '../image/viking.jpg';
+import viking from '../../image/viking.jpg';
 
-function ModalDetails({ show, onHide, foods }) {
+function ModalDetails({ show, onHide, foods, location }) {
     const propSimulator = { onHide, show };
     const colse = () => {
         window.location.href = '/';
     };
-    console.log(foods);
 
     if(!foods) return <></>
 

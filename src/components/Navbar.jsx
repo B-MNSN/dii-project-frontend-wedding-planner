@@ -1,7 +1,7 @@
 import logo from "../image/logo_cusu.png";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { useState } from "react";
-import Modal from "./ModalHowTo";
+import Modal from "./modal/ModalHowTo";
 
 function Navbar() {
   const [modalShow, setModalShow] = useState(false);

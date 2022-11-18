@@ -1,24 +1,24 @@
-import Food from './detailList/Food';
+import Location from './detailList/Location';
 import { useState } from "react";
-import Modal from './modal/ModalDetails';
+import Modal from './modal/ModalLocation';
 
-function DetailList({ foods, display }) {
+function DerailsLocation({ location, display }) {
     const [modalShow, setModalShow] = useState(false);
     const confirm = () => {
         window.location.href = '/my_wedding_planner';
     };
-    console.log(display);
+    console.log(location);
     
     return(
         <>
             <div style={{display }} className="border bg-secondary rounded-2 bg-opacity-10 col-md-8">
                 <div className="row d-flex">
                     <div className="col-12">
-                        <h3 className='ms-5 mt-4'>อาหาร</h3>
+                        <h3 className='ms-5 mt-4'>สถานที่</h3>
                     </div>
                     <div className='col d-flex flex-wrap justify-content-center'>
-                        {foods.map((food) => (
-                            <Food key={food._id} foods={food}/>
+                        {location.map((locations) => (
+                            <Location key={locations._id} location={locations}/>
                         ))}
                     </div>
                     <div className='d-flex justify-content-end'>
@@ -36,4 +36,4 @@ function DetailList({ foods, display }) {
     );
     
 };
-export default DetailList;
+export default DerailsLocation;

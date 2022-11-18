@@ -1,5 +1,5 @@
 import Modal from 'react-bootstrap/Modal';
-import check from '../image/check.png';
+import check from '../../image/check.png';
 
 function ModalHowTo({ show, onHide }) {
     const propSimulator = { onHide, show };

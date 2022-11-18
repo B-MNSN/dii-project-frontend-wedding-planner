@@ -1,7 +1,7 @@
 import Modal from 'react-bootstrap/Modal';
-import check from '../image/check.png';
+import check from '../../image/check.png';
 import { useState } from "react";
-import ModalSuccess from '../components/ModalSuccess';
+import ModalSuccess from './ModalSuccess';
 
 function ModalOrganize({ show, onHide }) {
     const [modalShow, setModalShow] = useState(false);

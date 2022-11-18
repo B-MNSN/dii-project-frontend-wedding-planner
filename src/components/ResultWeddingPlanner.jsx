@@ -1,4 +1,4 @@
-import Modal from "./ModalOrganize";
+import Modal from "./modal/ModalOrganize";
 import { useState } from "react";
 
 function ResultWeddingPlanner() {
