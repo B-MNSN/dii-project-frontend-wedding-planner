@@ -56,9 +56,8 @@ export default function Adddress({ className }) {
                                 <input type="text" class="  form-control q-text container-fluid " placeholder='ราคา-ชุดแต่งงาน' id='title' value={dress_price} onChange={handChange(setDressPrice)}></input>
                             </div>
                             <div class="d-flex m-4 d-flex justify-content-end">
-                            <button type="button" class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button>
-                            <button type="submit" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Confirm</button>
-                              
+                            <a href="/Adminbar"><button class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button></a>
+                            <a href="/"><button class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Confirm</button></a>   
                             </div>
 
                         </div>
