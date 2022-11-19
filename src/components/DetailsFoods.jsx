@@ -23,7 +23,7 @@ function DetailList({foods}) {
                     ))}
                         </div>
                 ) : (
-                  <p>sdasad</p>
+                  <p></p>
                 )}
                     
                 </div>
