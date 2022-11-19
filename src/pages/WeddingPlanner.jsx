@@ -3,7 +3,7 @@ import SelectStep from "../components/SelectSteap";
 import { useState } from "react";
 import { useEffect } from 'react';
 import axios from 'axios';
-import DetailsFoods from "../components/DetailsFoods";
+import DetailsFoods from "../components/boxDetailList/DetailsFoods";
 
 function WeddingPlanner() {
     const [foods, setFoods] = useState([]);
@@ -11,7 +11,6 @@ function WeddingPlanner() {
     const [work, setWork] = useState([]);
     const [location, setLocation] = useState([]);
     const [dressWedding, setDressWedding] = useState([]);
-    const [guest, setGuest] = useState([]);
     const [gift, setGift] = useState([]);
     const [photo, setPhoto] = useState([]);
     const [card, setCard] = useState([]);
@@ -65,7 +64,7 @@ function WeddingPlanner() {
         <>
             <Navbar/>
             {/* <div className="d-flex justify-content-center mt-5 mx-5 row"> */}
-                <SelectStep foods={foods} location={location}/>
+                <SelectStep foods={foods} location={location} theme={theme} dressWedding={dressWedding} photo={photo} card={card} gift={gift}/>
                 {/* <DetailsFoods foods={foods}/> */}
             {/* </div> */}
         </>

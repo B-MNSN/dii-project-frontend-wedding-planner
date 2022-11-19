@@ -1,19 +1,19 @@
 import Modal from 'react-bootstrap/Modal';
 import viking from '../../image/viking.jpg';
 
-function ModalGift({ show, onHide, gift }) {
+function ModalTheme({ show, onHide, theme }) {
     const propSimulator = { onHide, show };
     const colse = () => {
         window.location.href = '/';
     };
 
-    if(!gift) return <></>
+    if(!theme) return <></>
 
     return(
         <>
             <Modal {...propSimulator} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title className='ms-4'>{gift.gift_name}</Modal.Title>
+                    <Modal.Title className='ms-4'>{theme.theme_name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='row mx-5'>
@@ -24,8 +24,8 @@ function ModalGift({ show, onHide, gift }) {
                         </div>
                         <div className='col-12 d-flex justify-content-center mt-4'> 
                             <div>
-                                <p><strong>รายละเอียด:</strong> {gift.gift_description}</p>
-                                <p><strong>ราคา:</strong> {gift.gift_price} บาท</p>
+                                <p><strong>รายละเอียด:</strong> {theme.theme_description}</p>
+                                <p><strong>ราคา:</strong> {theme.theme_price} บาท</p>
                             </div>
                         </div>
                         <div className='col d-flex justify-content-center mt-3'>
@@ -40,4 +40,4 @@ function ModalGift({ show, onHide, gift }) {
     );
     
 }
-export default ModalGift;
+export default ModalTheme;

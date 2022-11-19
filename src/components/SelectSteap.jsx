@@ -1,29 +1,26 @@
 import { useState } from "react";
 import Collapse from 'react-bootstrap/Collapse';
-import DetailsFoods from "./DetailsFoods";
-import DetailsLocation from './DetailsLocation';
+import DetailsGuest from './boxDetailList/DetailsGuest'
+import DetailsFoods from "./boxDetailList/DetailsFoods";
+import DetailsLocation from './boxDetailList/DetailsLocation';
+import DetailsTheme from "./boxDetailList/DetailsTheme";
+import DetailsDress from "./boxDetailList/DetailsDress";
+import DetailsPhoto from "./boxDetailList/DetailsPhoto";
+import DetailsCard from "./boxDetailList/DetailsCard";
+import DetailsGift from "./boxDetailList/DetailsGift";
 
-function SelectStep({foods, location}) {
+function SelectStep({foods, location, theme,dressWedding, photo, card, gift}) {
     const [open, setOpen] = useState(false);
     const [openLocation, setOpenLocation] = useState(false);
     
     const [display, setDisplay] = useState('');
 
-    // const [foods, setFoods] = useState('');
-    // const [theme, setTheme] = useState('');
-    // const [work, setWork] = useState('');
-    // const [location, setLocation] = useState('');
-    // const [dressWedding, setDressWedding] = useState('');
-    // const [guest, setGuest] = useState('');
-    // const [gift, setGift] = useState('');
-    // const [photo, setPhoto] = useState('');
-    // const [card, setCard] = useState('');
-    // const [modalShow, setModalShow] = useState(false);
-    
     const onSelect = (event) => {
         setDisplay(event.target.innerText);
         console.log(event.target.innerText);
     };
+
+    // if(!foods && !location && !theme && !dressWedding && !card && !photo && !card && !gift) return <></>
 
     return(
         <>
@@ -60,8 +57,14 @@ function SelectStep({foods, location}) {
                     </div>
                 </div>
             </div>
-            <DetailsFoods foods={foods} display={display === 'แขก' ? 'block' : 'none'}/>
+            <DetailsGuest display={display === 'แขก' ?  'block':'none' }/>
+            <DetailsTheme theme={theme} display={display === 'ธีม' ? 'block' : 'none'}/>
+            <DetailsFoods foods={foods} display={display === 'อาหาร' ? 'block' : 'none'} />
             <DetailsLocation location={location} display={display === 'สถานที่' ? 'block' : 'none'} />
+            <DetailsDress dressWedding={dressWedding} display={display === 'ชุดแต่งงาน' ?  'block' : 'none'}/>
+            <DetailsPhoto photo={photo} display={display === 'ถ่ายรูป Pre-wedding' ?  'block' : 'none'}/>
+            <DetailsCard card={card} display={display === 'การ์ดแต่งงาน' ?  'block' : 'none'}/>
+            <DetailsGift gift={gift} display={display === 'ของชำร่วย' ?  'block' : 'none'}/>
         </div>
         </>
     );

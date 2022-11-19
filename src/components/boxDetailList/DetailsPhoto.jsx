@@ -1,24 +1,26 @@
-import Food from './detailList/Food';
+import Photo from '../detailList/Photo';
 import { useState } from "react";
-import Modal from './modal/ModalDetails';
+import Modal from '../modal/ModalPhoto';
 
-function DetailList({ foods, display }) {
+function DetailsPhoto({ photo, display }) {
     const [modalShow, setModalShow] = useState(false);
     const confirm = () => {
         window.location.href = '/my_wedding_planner';
     };
     console.log(display);
+
+    if(!photo) return <> </>
     
     return(
         <>
             <div style={{display }} className="border bg-secondary rounded-2 bg-opacity-10 col-md-8">
                 <div className="row d-flex">
                     <div className="col-12">
-                        <h3 className='ms-5 mt-4'>อาหาร</h3>
+                        <h3 className='ms-5 mt-4'>ถ่ายรูป Pre-Wedding</h3>
                     </div>
                     <div className='col d-flex flex-wrap justify-content-center'>
-                        {foods.map((food) => (
-                            <Food key={food._id} foods={food}/>
+                        {photo.map((photos) => (
+                            <Photo key={photos._id} photo={photos}/>
                         ))}
                     </div>
                     <div className='d-flex justify-content-end'>
@@ -26,14 +28,10 @@ function DetailList({ foods, display }) {
                         <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1' onClick={confirm}>Next</button>
                     </div>
                 </div>
-                
-                
             </div>
             <Modal show={modalShow} onHide={() => setModalShow(false)}/>
-            
-
         </>
     );
     
 };
-export default DetailList;
+export default DetailsPhoto;

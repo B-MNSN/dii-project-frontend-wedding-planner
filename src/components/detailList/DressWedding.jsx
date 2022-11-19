@@ -1,8 +1,12 @@
 import { useState } from "react";
-import Modal from "../ModalDetails";
+import Modal from "../modal/ModalDress";
+import check from "../../image/check.png";
 
-function DressWedding() {
+function DressWedding({dressWedding}) {
     const [modalShow, setModalShow] = useState(false);
+
+    if(!dressWedding) return <> </>
+    
     return (
         <>
           <div className="col-md-3 mx-3 mt-4">
@@ -13,13 +17,13 @@ function DressWedding() {
               className="d-flex justify-content-center mt-2"
               onClick={() => setModalShow(true)}
             >
-              <p>{foods.food_catagory}</p>
+              <p>{dressWedding.dress_name}</p>
             </div>
           </div>
           <Modal
             show={modalShow}
             onHide={() => setModalShow(false)}
-            foods={foods}
+            dressWedding={dressWedding}
           />
         </>
       );

@@ -1,8 +1,12 @@
 import { useState } from "react";
-import Modal from "../ModalDetails";
+import Modal from "../modal/ModalGift";
+import check from "../../image/check.png";
 
-function Gift() {
+function Gift({gift}) {
     const [modalShow, setModalShow] = useState(false);
+
+    if(!gift) return <></>
+    
     return (
         <>
           <div className="col-md-3 mx-3 mt-4">
@@ -13,13 +17,13 @@ function Gift() {
               className="d-flex justify-content-center mt-2"
               onClick={() => setModalShow(true)}
             >
-              <p>{foods.food_catagory}</p>
+              <p>{gift.gift_name}</p>
             </div>
           </div>
           <Modal
             show={modalShow}
             onHide={() => setModalShow(false)}
-            foods={foods}
+            gift={gift}
           />
         </>
       );

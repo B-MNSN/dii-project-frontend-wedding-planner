@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Modal from "../ModalDetails";
+import Modal from "../modal/ModalCard";
+import check from "../../image/check.png";
 
-function CardWedding() {
+function CardWedding({card}) {
     const [modalShow, setModalShow] = useState(false);
     return (
         <>
@@ -13,13 +14,13 @@ function CardWedding() {
               className="d-flex justify-content-center mt-2"
               onClick={() => setModalShow(true)}
             >
-              <p>{foods.food_catagory}</p>
+              <p>{card.food_catagory}</p>
             </div>
           </div>
           <Modal
             show={modalShow}
             onHide={() => setModalShow(false)}
-            foods={foods}
+            card={card}
           />
         </>
       );
