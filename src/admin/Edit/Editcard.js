@@ -42,7 +42,7 @@ export default function Editcard({ className }) {
                                             </div>
                                               <h1><HiCheckCircle></HiCheckCircle></h1>  
                                             <div class="modal-body">
-                                                คุณได้ทำการเปลี่ยนลายระเอียดธีมงานแต่งเรียบร้อยแล้ว
+                                                คุณได้ทำการเปลี่ยนลายระเอียดการ์ดงานแต่งเรียบร้อยแล้ว
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg" data-bs-dismiss="modal">Close</button>
