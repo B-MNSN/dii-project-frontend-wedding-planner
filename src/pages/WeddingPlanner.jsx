@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import SelectStep from "../components/SelectSteap";
-import { useState } from "react";
+import { useState, useRef  } from "react";
 import { useEffect } from 'react';
 import axios from 'axios';
 import DetailsFoods from "../components/boxDetailList/DetailsFoods";
@@ -14,6 +14,7 @@ function WeddingPlanner() {
     const [gift, setGift] = useState([]);
     const [photo, setPhoto] = useState([]);
     const [card, setCard] = useState([]);
+
 
     useEffect(() => {
         async function getDetailList(){

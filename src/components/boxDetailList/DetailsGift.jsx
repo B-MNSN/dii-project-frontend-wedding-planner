@@ -7,18 +7,17 @@ function DetailsGift({ gift, display }) {
     const confirm = () => {
         window.location.href = '/my_wedding_planner';
     };
-    console.log(display);
 
     if(!gift) return <> </>
     
     return(
         <>
-            <div style={{display }} className="border bg-secondary rounded-2 bg-opacity-10 col-md-8">
+            <div style={{display }} className="border bg-secondary rounded-2 bg-opacity-10 col-md-7 shadow">
                 <div className="row d-flex">
                     <div className="col-12">
                         <h3 className='ms-5 mt-4'>ของชำร่วย</h3>
                     </div>
-                    <div className='col d-flex flex-wrap justify-content-center'>
+                    <div className='col d-flex flex-wrap ms-5'>
                         {gift.map((gifts) => (
                             <Gift key={gifts._id} gift={gifts}/>
                         ))}

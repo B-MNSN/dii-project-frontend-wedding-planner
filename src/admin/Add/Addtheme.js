@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef  } from "react"
 import logo from "../../image/logo_cusu.png";
 import { BiImageAdd } from "react-icons/bi";
 import axios, { AxiosError } from "axios";
@@ -9,24 +9,28 @@ export default function Addtheme({ className }) {
     const [theme_name, setThemeName] = useState("");
     const [theme_description, setThemeDescription] = useState("");
     const [theme_price, setThemePrice] = useState("");
+    const inputFileRef = useRef(null)
 
     const handChange = (fn) => {
         return (event) => {
             fn(event.target.value);
         };
     };
-
+    let formData = new FormData();    //formdata object
     const onSubmit = async (e) => {
         try {
-          e.preventDefault();
-          const addTheme = await axios.post("http://localhost:4001/theme", {
-            theme_img,
-            theme_name,
-            theme_description,
-            theme_price,
-          });
-          console.log(addTheme);
-          localStorage.setItem("status", JSON.stringify(addTheme.data.status));
+            
+            formData.append("theme_img", theme_img);   //append the values with key, value pair
+            formData.append("theme_name", theme_name);
+            formData.append("theme_description", theme_description);
+            formData.append("theme_price", theme_price);
+            console.log(formData)
+            e.preventDefault();
+            const addTheme = await axios.post("http://localhost:4001/theme",{headers: { 'content-type': 'multipart/form-data' }}, {
+                formData
+            });
+            console.log(addTheme);
+            localStorage.setItem("status", JSON.stringify(addTheme.data.status));
 
         } catch (error) {
           console.error(error);
@@ -34,7 +38,24 @@ export default function Addtheme({ className }) {
             console.error(error.message);
           }
         }
-      };
+    };
+
+    
+
+    const fileToBase64 = (filename, filepath) => {
+        return new Promise((resolve) => {
+            var file = new File([filename], filepath);
+            var reader = new FileReader(); // Read file content on file loaded event
+            reader.onload = function (event) {
+                resolve(event.target.result);
+            }; // Convert data to base64
+            reader.readAsDataURL(file);
+        });
+    };
+    const handleChange = async (e) => {
+        setThemeImg(await fileToBase64(inputFileRef.current.files[0]))
+    };
+    // console.log(theme_img)
 
     return (
         <div className={className}>
@@ -45,8 +66,8 @@ export default function Addtheme({ className }) {
                     <div class="border-top border-4 border-dark "></div>
 
                     <div class="col-12 d-flex justify-content-center">
-                        <button class="add-picture m-4" type="button"><h1><BiImageAdd></BiImageAdd></h1></button>
-
+                        <button class="add-picture m-4" type="button"><h1><BiImageAdd></BiImageAdd></h1>
+                        <input type="file" name='file' ref={inputFileRef} onChange={handleChange} /></button>
                         <div className="col-8">
                             <div class="m-4 d-flex justify-content-end">
                                 <input type="text" class="  form-control q-text container-fluid" placeholder='ชื่อ-ธีม' id='title' value={theme_name} onChange={handChange(setThemeName)}></input>

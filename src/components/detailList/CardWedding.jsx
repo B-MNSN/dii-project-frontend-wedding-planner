@@ -14,7 +14,7 @@ function CardWedding({card}) {
               className="d-flex justify-content-center mt-2"
               onClick={() => setModalShow(true)}
             >
-              <p>{card.food_catagory}</p>
+              <p>{card.card_name}</p>
             </div>
           </div>
           <Modal

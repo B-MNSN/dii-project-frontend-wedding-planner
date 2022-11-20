@@ -7,6 +7,8 @@ function Theme({ theme }) {
   
   if(!theme) return <></>
 
+  console.log(theme)
+
   return (
     <>
       <div className="col-md-3 mx-3 mt-4">

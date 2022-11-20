@@ -13,7 +13,7 @@ function ModalDress({ show, onHide, dressWedding }) {
         <>
             <Modal {...propSimulator} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title className='ms-4'>{dressWedding.dressWedding_name}</Modal.Title>
+                    <Modal.Title className='ms-4'>{dressWedding.dress_name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='row mx-5'>

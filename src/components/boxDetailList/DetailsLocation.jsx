@@ -10,12 +10,12 @@ function DerailsLocation({ location, display }) {
     
     return(
         <>
-            <div style={{display }} className="border bg-secondary rounded-2 bg-opacity-10 col-md-8">
+            <div style={{display }} className="border bg-secondary rounded-2 bg-opacity-10 col-md-7 shadow">
                 <div className="row d-flex">
                     <div className="col-12">
                         <h3 className='ms-5 mt-4'>สถานที่</h3>
                     </div>
-                    <div className='col d-flex flex-wrap justify-content-center'>
+                    <div className='col d-flex flex-wrap ms-5'>
                         {location.map((locations) => (
                             <Location key={locations._id} location={locations}/>
                         ))}

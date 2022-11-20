@@ -1,13 +1,32 @@
 import logo from "../image/logo_cusu.png";
 import { HiOutlineUserCircle } from "react-icons/hi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "./modal/ModalHowTo";
 
 function Navbar() {
   const [modalShow, setModalShow] = useState(false);
+
+  const [navSize, setnavSize] = useState("10rem");
+  const [navColor, setnavColor] = useState("#fff");
+
+  const listenScrollEvent = () => {
+    window.scrollY > 30 ? setnavColor("#E7D6CC") : setnavColor("#fff");
+    // window.scrollY > 10 ? setnavSize("5rem") : setnavSize("10rem");
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
+    return () => {
+      window.removeEventListener("scroll", listenScrollEvent);
+    };
+  }, []);
+
+
   return (
     <>
-      <div className="shadow">
+      <div className="navbarr sticky-top shadow" style={{
+          backgroundColor: navColor,
+          transition: "all 1s"
+        }}>
         <div className="d-flex justify-content-around p-2">
           <a href="/home"><img src={logo} alt="logo" href="" width={100} /></a>
           <div className="">

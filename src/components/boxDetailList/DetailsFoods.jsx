@@ -7,16 +7,17 @@ function DetailList({ foods, display }) {
     const confirm = () => {
         window.location.href = '/my_wedding_planner';
     };
-    console.log(display);
+    // console.log(display);
+    if(!foods) return <> </>
     
     return(
         <>
-            <div style={{display }} className="border bg-secondary rounded-2 bg-opacity-10 col-md-8">
+            <div style={{display }} className="border bg-secondary rounded-2 bg-opacity-10 col-md-7 shadow">
                 <div className="row d-flex">
                     <div className="col-12">
                         <h3 className='ms-5 mt-4'>อาหาร</h3>
                     </div>
-                    <div className='col d-flex flex-wrap justify-content-center'>
+                    <div className='col d-flex flex-wrap ms-5'>
                         {foods.map((food) => (
                             <Food key={food._id} foods={food}/>
                         ))}
