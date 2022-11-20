@@ -1,10 +1,44 @@
 import Modal from 'react-bootstrap/Modal';
 import viking from '../../image/viking.jpg';
+import { useState,useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import axios, { AxiosError } from "axios";
 
 function ModalPhoto({ show, onHide, photo }) {
     const propSimulator = { onHide, show };
-    const colse = () => {
-        window.location.href = '/';
+    const { tran_id } = useParams();
+    console.log(tran_id);
+    const [transaction, setTransaction] = useState([]);
+    const [token, setToken] = useState(localStorage.getItem("status"));
+
+    useEffect(() => {
+        async function getTransaction(){
+            try{
+                const tran = await axios.get(`http://localhost:4001/transaction/${tran_id}`,{
+                    headers: {
+                        'token': token
+                    }
+                });
+                setTransaction(tran.data)
+            }catch (error){
+                console.error(error)
+            }
+        };
+        getTransaction();
+    },[]);
+
+    const confirm = async (e) => {
+        // console.log(transaction)
+        try{
+            const trans = await axios.put(`http://localhost:4001/transaction/update/${transaction._id}?update=photo`, {
+                value: photo.photo_name
+                
+            });
+            console.log(trans);
+        } 
+        catch (error){
+            console.error(error);
+        }
     };
 
     if(!photo) return <></>
@@ -29,8 +63,8 @@ function ModalPhoto({ show, onHide, photo }) {
                             </div>
                         </div>
                         <div className='col d-flex justify-content-center mt-3'>
-                            <button className='btnCancel border-0 rounded-2 text-light m-2 px-4 py-1' onClick={colse}>Cancel</button>
-                            <button className='btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1'>Confirm</button>
+                            <button className='btnCancel border-0 rounded-2 text-light m-2 px-4 py-1' >Cancel</button>
+                            <button className='btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1' onClick={confirm}>Confirm</button>
                         </div>
                         
                     </div>

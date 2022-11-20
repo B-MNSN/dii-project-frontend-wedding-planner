@@ -1,6 +1,6 @@
 import DressWedding from '../detailList/DressWedding';
 import { useState } from "react";
-import Modal from '../modal/ModalDetails';
+import Modal from '../modal/ModalDress';
 
 function DetailsDress({ dressWedding, display }) {
     const [modalShow, setModalShow] = useState(false);

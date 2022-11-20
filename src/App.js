@@ -22,12 +22,12 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route path='/' element={<Login />} /> */}
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Login />} />
+        {/* <Route path='/' element={<Home />} /> */}
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/home' element={<Home/>}/>
-        <Route path='/wedding_planner' element={<WeddingPlanner/>}/>
+        <Route path='/wedding_planner/:tran_id' element={<WeddingPlanner/>}/>
         <Route path='/my_wedding_planner' element={<MyWDP/>}/>
         <Route path='/Adminbar' element={<Adminbar/>}/>
         <Route path='/Addtheme' element={<Addtheme/>}/>

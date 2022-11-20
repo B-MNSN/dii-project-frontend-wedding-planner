@@ -39,7 +39,7 @@ function Register() {
       <div className="register-page d-flex align-items-center justify-content-center">
         <div className="row">
           <div className="col-12 d-flex justify-content-center">
-            <img src={logo} alt="logo" className="logo mt-3" width={300} />
+            <img src={logo} alt="logo" className="logo mt-3" width={250} />
           </div>
           <div className="register-bg col mt-3 rounded-3">
             <Form className="m-5" onSubmit={onSubmit}>

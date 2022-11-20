@@ -2,7 +2,7 @@ import Location from '../detailList/Location';
 import { useState } from "react";
 import Modal from '../modal/ModalLocation';
 
-function DerailsLocation({ location, display }) {
+function DerailsLocation({ location, display}) {
     const [modalShow, setModalShow] = useState(false);
     const confirm = () => {
         window.location.href = '/my_wedding_planner';

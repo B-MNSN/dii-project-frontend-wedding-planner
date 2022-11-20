@@ -15,6 +15,26 @@ function WeddingPlanner() {
     const [photo, setPhoto] = useState([]);
     const [card, setCard] = useState([]);
 
+    const [user, setUser] = useState();
+    const [token, setToken] = useState(localStorage.getItem("status"));
+
+    useEffect(() => {
+        async function  getUser(){
+            try{
+                const user = await axios.get('http://localhost:4001/login/getuser',{
+                    headers: {
+                        'token': token
+                    }
+                });
+                setUser(user.data)
+                // console.log(user)
+            }catch (error){
+                console.error(error)
+            }
+        };
+        getUser();
+    },[]);
+
 
     useEffect(() => {
         async function getDetailList(){

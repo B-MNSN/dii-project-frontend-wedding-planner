@@ -8,15 +8,35 @@ import DetailsDress from "./boxDetailList/DetailsDress";
 import DetailsPhoto from "./boxDetailList/DetailsPhoto";
 import DetailsCard from "./boxDetailList/DetailsCard";
 import DetailsGift from "./boxDetailList/DetailsGift";
+import { useEffect } from 'react';
+import axios from 'axios';
 
 function SelectStep({foods, location, theme,dressWedding, photo, card, gift}) {
     const [open, setOpen] = useState(false);
     const [openLocation, setOpenLocation] = useState(false);
     
-    const [display, setDisplay] = useState('');
+    const [display, setDisplay] = useState('แขก');
 
-    const [active, setActive] = useState([true, true]);
-    const [count, setCount] =useState(0);
+
+    const [user, setUser] = useState();
+    const [token, setToken] = useState(localStorage.getItem("status"));
+
+    useEffect(() => {
+        async function  getUser(){
+            try{
+                const user = await axios.get('http://localhost:4001/login/getuser',{
+                    headers: {
+                        'token': token
+                    }
+                });
+                setUser(user.data)
+                // console.log(user)
+            }catch (error){
+                console.error(error)
+            }
+        };
+        getUser();
+    },[]);
 
     const onSelect = (event) => {
         setDisplay(event.target.innerText);
@@ -30,9 +50,6 @@ function SelectStep({foods, location, theme,dressWedding, photo, card, gift}) {
         setDisplay(event.target.innerText);
         setOpenLocation(!openLocation)
     }
-
-    
-
 
     return(
         <>

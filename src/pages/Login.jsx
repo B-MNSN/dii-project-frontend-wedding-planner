@@ -8,6 +8,18 @@ function Login() {
   const [password, setPassword] = useState([]);
   const [token, setToken] = useState("");
 
+  //transaction
+  const [user_id, setUser_id] = useState('');
+  const [guest, setGuest] = useState('');
+  const [theme, setTheme] = useState('');
+  const [work, setWork] = useState('');
+  const [food, setFood] = useState('');
+  const [location, setLocation] = useState('');
+  const [dress, setdress] = useState('');
+  const [photo, setPhoto] = useState('');
+  const [card, setCard] = useState('');
+  const [gift, setGift] = useState('');
+
   const handChange = (fn) => {
     return (event) => {
       fn(event.target.value);
@@ -26,10 +38,28 @@ function Login() {
         email,
         password,
       });
+
+      const transaction = await axios.post('http://localhost:4001/transaction', {
+        user_id,
+        guest,
+        theme,
+        work,
+        food,
+        location,
+        dress,
+        photo,
+        card,
+        gift
+
+      });
+      console.log(transaction);
+
       console.log(start);
-      localStorage.setItem("status", JSON.stringify(start.data.token));
-      setToken(JSON.parse(localStorage.getItem("status")));
-      window.location.href = "/home";
+       
+      localStorage.setItem("status", start.data.token);
+      setToken(localStorage.getItem("status"));
+      // window.location.href = "/home";
+
     } catch (error) {
       console.error(error);
       if (error instanceof AxiosError) {
@@ -42,7 +72,7 @@ function Login() {
       <div className="login-page d-flex align-items-center justify-content-center">
         <div className="row">
           <div className="col-12 d-flex justify-content-center">
-            <img src={logo} alt="logo" className="logo mt-3" width={300} />
+            <img src={logo} alt="logo" className="logo mt-3" width={250} />
           </div>
           <div className="login-bg col mt-3 rounded-3">
             <Form className="m-5" onSubmit={onSubmit}>
@@ -75,7 +105,7 @@ function Login() {
                 className="my-3 d-flex justify-content-center"
                 controlId="formBasicCheckbox"
               >
-                <a href="/" className="text-decoration-none text-muted">
+                <a href="/register" className="text-decoration-none text-muted">
                   Register /
                 </a>
                 <a href="/" className="text-decoration-none text-muted">

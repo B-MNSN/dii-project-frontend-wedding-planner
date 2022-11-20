@@ -1,11 +1,14 @@
 import Theme from '../detailList/Theme';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from '../modal/ModalTheme';
 
 function DetailsTheme({ theme, display }) {
     const [modalShow, setModalShow] = useState(false);
 
+ 
     if(!theme) return <></>
+
+
 
     return(
         <>
