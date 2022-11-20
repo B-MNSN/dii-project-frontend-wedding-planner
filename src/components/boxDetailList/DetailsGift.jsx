@@ -7,6 +7,7 @@ function DetailsGift({ gift, display }) {
     const confirm = () => {
         window.location.href = '/my_wedding_planner';
     };
+    
 
     if(!gift) return <> </>
     

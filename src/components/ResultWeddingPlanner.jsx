@@ -1,22 +1,46 @@
 import Modal from "./modal/ModalOrganize";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import axios, { AxiosError } from "axios";
 
 function ResultWeddingPlanner() {
   const [modalShow, setModalShow] = useState(false);
+  const { tran_id } = useParams();
+    console.log(tran_id);
+  const [transaction, setTransaction] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem("status"));
+
+  useEffect(() => {
+        async function getTransaction(){
+            try{
+                const tran = await axios.get(`http://localhost:4001/transaction/${tran_id}`,{
+                    headers: {
+                        'token': token
+                    }
+                });
+                setTransaction(tran.data)
+            }catch (error){
+                console.error(error)
+            }
+        };
+        getTransaction();
+  },[]);
+  // console.log(transaction)
 
   return (
     <>
       <div className="border bg-secondary rounded-2 bg-opacity-10 w-75">
         <div className="m-5">
           <h2 className="mb-5">My Wedding PLanner</h2>
-          <p>ธีม: ธีมที่เลือก</p>
-          <p>งาน: งานที่เลือก</p>
-          <p>อาหาร: อาหารเลือก</p>
-          <p>สถานที่: สถานที่ที่เลือก</p>
-          <p>ชุดแต่งงาน: ชุดแต่งงานที่เลือก</p>
-          <p>รูป pre-wedding: รายละเอียดรูป</p>
-          <p>การ์ดแต่งงาน: การ์ดที่เลือก</p>
-          <p>ของชำร่วย: ของที่เลือก</p>
+          <p>แขก: {transaction.guest} คน</p>
+          <p>ธีม: {transaction.theme}</p>
+          {/* <p>งาน: งานที่เลือก</p> */}
+          <p>อาหาร: {transaction.food}</p>
+          <p>สถานที่: {transaction.location}</p>
+          <p>ชุดแต่งงาน: {transaction.dress}</p>
+          <p>รูป pre-wedding: {transaction.photo}</p>
+          <p>การ์ดแต่งงาน: {transaction.card}</p>
+          <p>ของชำร่วย: {transaction.gift}</p>
           <div className="d-flex justify-content-between">
             <p>งบประมาณการจัดงาน</p>
             <div className="border px-4">x,xxxx,xxx บาท</div>
