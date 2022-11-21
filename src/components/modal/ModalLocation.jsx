@@ -6,20 +6,23 @@ import { useParams } from 'react-router-dom';
 
 function ModalLocation({ show, onHide, location}) {
     const propSimulator = { onHide, show };
-    const { tran_id } = useParams();
-    // console.log(tran_id);
-    const [transaction, setTransaction] = useState([]);
+    const { userid } = useParams();
+    const [transaction, setTransaction] = useState();
     const [token, setToken] = useState(localStorage.getItem("status"));
+    const [tranid, setTranid] = useState('')
 
     useEffect(() => {
         async function getTransaction(){
             try{
-                const tran = await axios.get(`http://localhost:4001/transaction/${tran_id}`,{
+                const tran = await axios.get(`http://localhost:4001/transaction/getuser/${userid}`,{
                     headers: {
                         'token': token
                     }
                 });
                 setTransaction(tran.data)
+                setTranid(tran.data[0]._id)
+                
+
             }catch (error){
                 console.error(error)
             }
@@ -28,9 +31,9 @@ function ModalLocation({ show, onHide, location}) {
     },[]);
 
     const confirm = async (e) => {
-        // console.log(transaction)
+        console.log(tranid)
         try{
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${transaction._id}?update=location`, {
+            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=location`, {
                 value: location.location_name
                 
             });

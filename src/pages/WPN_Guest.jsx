@@ -37,7 +37,7 @@ function WPN_Guest(){
                 });
                 setUser(user.data)
                 setuser_id(user.data._id);
-                console.log(user)
+                console.log(user.data)
             }catch (error){
                 console.error(error)
             }
@@ -73,7 +73,7 @@ function WPN_Guest(){
     return(
         <>  <Navbar/>
             <div className="d-flex justify-content-center mt-5 mx-5 row">
-                <SelectStep/>
+                <SelectStep />
                 <div className="border bg-secondary rounded-2 bg-opacity-10 col-md-7 shadow">
                     {/* <from className="row d-flex"> */}
                         <div className="col-12">

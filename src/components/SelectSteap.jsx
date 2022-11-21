@@ -12,12 +12,58 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+// import { useParams } from 'react-router-dom';
 
-function SelectStep({foods, location, theme,dressWedding, photo, card, gift}) {
+function SelectStep({onStep}) {
     const [open, setOpen] = useState(false);
     const [openLocation, setOpenLocation] = useState(false);
     
     const [display, setDisplay] = useState('แขก');
+
+    const [token, setToken] = useState(localStorage.getItem("status"));
+    // const { userid } = useParams();
+    const [transaction, setTransaction] = useState();
+
+    const [user, setUser] = useState();
+    const [user_id,setuser_id] = useState('');
+
+    useEffect(() => {
+        async function  getUser(){
+            try{
+                const user = await axios.get('http://localhost:4001/login/getuser',{
+                    headers: {
+                        'token': token
+                    }
+                });
+                setUser(user)
+                setuser_id(user.data._id);
+                // console.log(user)
+            }catch (error){
+                console.error(error)
+            }
+        };
+        getUser();
+    },[]);
+
+
+    useEffect(() => {
+        async function getTransaction(){
+            try{
+                const tran = await axios.get(`http://localhost:4001/transaction/getuser/${user_id}`,{
+                    headers: {
+                        'token': token
+                    }
+                });
+                setTransaction(tran.data[0])
+
+            }catch (error){
+                console.error(error)
+            }
+        };
+        getTransaction();
+    },[]);
+
+    // console.log(transaction)
 
 
     const onSelect = (event) => {
@@ -33,6 +79,8 @@ function SelectStep({foods, location, theme,dressWedding, photo, card, gift}) {
         setOpenLocation(!openLocation)
     }
 
+
+
     return(
         <>
             <div className="border bg-secondary rounded-2 bg-opacity-10 col-md-4 shadow me-3">
@@ -42,45 +90,29 @@ function SelectStep({foods, location, theme,dressWedding, photo, card, gift}) {
                     </div>
                     <div className="col mt-4">
                         <ul className="p-0">
-                            <Link to={`/WPN_Guest`} style={{ textDecoration: 'none' , color: 'gray'}}>
-                                <li className={`menulist rounded-4 ps-4 py-2 ${display === 'แขก' ? 'menulistActive' : ''} `} onClick={onSelect}>แขก</li>
-                            </Link>
-                            <Link to="/WPN_theme" style={{ textDecoration: 'none' , color: 'gray' }}>
-                                <li className={`menulist rounded-4 ps-4 py-2 ${display === 'ธีม' ? 'menulistActive' : ''} `}  onClick={onSelect}>ธีม</li>
-                            </Link>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 1 ? 'menulistActive' : ''} `} onClick={onSelect}>แขก</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 2 ? 'menulistActive' : ''} `}  onClick={onSelect}>ธีม</li>
                             {/* <Link to="/WPN_Guest">
                                 <li className={`menulist rounded-4 ps-4 py-2 ${display === 'งานเช้า/งานเย็น' ? 'menulistActive' : ''} `} onClick={onSelect}>งานเช้า/งานเย็น</li>
                             </Link> */}
-                            <Link to="/WPN_food" style={{ textDecoration: 'none' , color: 'gray' }}>
-                                 <li className={`menulist rounded-4 ps-4 py-2 ${display === 'อาหาร' ? 'menulistActive' : ''} `} onClick={onSelect} aria-controls="example-collapse-text" >อาหาร</li>
+                                <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 3 ? 'menulistActive' : ''} `} onClick={onSelect} aria-controls="example-collapse-text" >อาหาร</li>
                                 {/* <Collapse in={open}>
                                     <ul id="example-collapse-text p-3" className="mt-2 ms-3">
                                         <li className={`menulist ps-4 py-2 rounded-4 ${display === 'ประเภทอาหาร' ? 'menulistActive' : ''} `}>ประเภทอาหาร</li>
                                         <li className={`menulist ps-4 py-2 rounded-4 ${display === 'ร้านอาหาร' ? 'menulistActive' : ''} `}>ร้านอาหาร</li>
                                     </ul>
                                 </Collapse> */}
-                            </Link>
-                            <Link to="/WPN_location" style={{ textDecoration: 'none' , color: 'gray' }}>
-                                <li className={`menulist rounded-4 ps-4 py-2 ${display === 'สถานที่' ? 'menulistActive' : ''} `} onClick={onSelect} aria-controls="example-collapse-text" >สถานที่</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 4 ? 'menulistActive' : ''} `} onClick={onSelect} aria-controls="example-collapse-text" >สถานที่</li>
                                 {/* <Collapse in={openLocation}>
                                     <ul id="example-collapse-text p-3" className="mt-2 ms-3">
                                         <li className={`menulist ps-4 py-2 rounded-4 ${display === 'Outdoor/Indoor' ? 'menulistActive' : ''} `} onClick={onSelect}>Outdoor/Indoor</li>
                                         <li className={`menulist ps-4 py-2 rounded-4 ${display === 'สถานที่' ? 'menulistActive' : ''} `} onClick={onSelect}>สถานที่</li>
                                     </ul>
                                 </Collapse> */}
-                            </Link>
-                            <Link to="/WPN_dress" style={{ textDecoration: 'none' , color: 'gray' }}>
-                                <li className={`menulist rounded-4 ps-4 py-2 ${display === 'ชุดแต่งงาน' ? 'menulistActive' : ''} `} onClick={onSelect}>ชุดแต่งงาน</li>
-                            </Link>
-                            <Link to="/WPN_photo" style={{ textDecoration: 'none' , color: 'gray' }}>
-                                <li className={`menulist rounded-4 ps-4 py-2 ${display === 'ถ่ายรูป Pre-wedding' ? 'menulistActive' : ''} `} onClick={onSelect}>ถ่ายรูป Pre-wedding</li>
-                            </Link>
-                            <Link to="/WPN_card" style={{ textDecoration: 'none' , color: 'gray' }}>
-                                <li className={`menulist rounded-4 ps-4 py-2 ${display === 'การ์ดแต่งงาน' ? 'menulistActive' : ''} `} onClick={onSelect}>การ์ดแต่งงาน</li>
-                            </Link>
-                            <Link to="/WPN_gift" style={{ textDecoration: 'none'  , color: 'gray'}}>
-                                <li className={`menulist rounded-4 ps-4 py-2 ${display === 'ของชำร่วย' ? 'menulistActive' : ''} `} onClick={onSelect}>ของชำร่วย</li>
-                            </Link>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 5 ? 'menulistActive' : ''} `} onClick={onSelect}>ชุดแต่งงาน</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 6 ? 'menulistActive' : ''} `} onClick={onSelect}>ถ่ายรูป Pre-wedding</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 7 ? 'menulistActive' : ''} `} onClick={onSelect}>การ์ดแต่งงาน</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 8 ? 'menulistActive' : ''} `} onClick={onSelect}>ของชำร่วย</li>
                         </ul>
                     </div>
                 </div>

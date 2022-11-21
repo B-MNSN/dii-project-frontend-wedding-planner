@@ -48,7 +48,7 @@ function App() {
 
         <Route path='/home' element={<Home/>}/>
         <Route path='/wedding_planner/:tran_id' element={<WeddingPlanner/>}/>
-        <Route path='/my_wedding_planner/:tran_id' element={<MyWDP/>}/>
+        {/* <Route path='/my_wedding_planner/:tran_id' element={<MyWDP/>}/> */}
         <Route path='/Adminbar' element={<Adminbar/>}/>
         {/* Admin */}
         <Route path='/Addtheme' element={<Addtheme/>}/>
@@ -69,6 +69,7 @@ function App() {
         <Route path='/WPN_photo/:userid' element={<WPN_photo/>}/>
         <Route path='/WPN_card/:userid' element={<WPN_card/>}/>
         <Route path='/WPN_gift/:userid' element={<WPN_gift/>}/>
+        <Route path='/my_wedding_planner/:userid' element={<MyWDP/>}/>
         {/* Edit */}
         <Route path='/Edittheme' element={<Edittheme/>}/>
         <Route path='/Editfood' element={<Editfood/>}/>

@@ -6,20 +6,25 @@ import axios, { AxiosError } from "axios";
 
 function ModalGift({ show, onHide, gift }) {
     const propSimulator = { onHide, show };
-    const { tran_id } = useParams();
-    // console.log(tran_id);
-    const [transaction, setTransaction] = useState([]);
+    const [user, setUser] = useState([]);
     const [token, setToken] = useState(localStorage.getItem("status"));
+    const { userid } = useParams();
+    const [transaction, setTransaction] = useState();
+    const [tranid, setTranid] = useState('')
+
 
     useEffect(() => {
         async function getTransaction(){
             try{
-                const tran = await axios.get(`http://localhost:4001/transaction/${tran_id}`,{
+                const tran = await axios.get(`http://localhost:4001/transaction/getuser/${userid}`,{
                     headers: {
                         'token': token
                     }
                 });
                 setTransaction(tran.data)
+                setTranid(tran.data[0]._id)
+                
+
             }catch (error){
                 console.error(error)
             }
@@ -30,7 +35,7 @@ function ModalGift({ show, onHide, gift }) {
     const confirm = async (e) => {
         // console.log(transaction)
         try{
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${transaction._id}?update=gift`, {
+            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=gift`, {
                 value: gift.gift_name
                 
             });
