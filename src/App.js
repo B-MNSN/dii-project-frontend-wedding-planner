@@ -1,4 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { Route, Routes } from 'react-router-dom';
 import './index.css';
 import Home from './pages/Home';
@@ -23,6 +26,14 @@ import WPN_dress from './pages/WPN_dress';
 import WPN_photo from './pages/WPN_photo';
 import WPN_card from './pages/WPN_card';
 import WPN_gift from './pages/WPN_gift';
+import Edittheme from './admin/Edit/Editthem';
+import Editphoto from './admin/Edit/Editphoto';
+import Editfood from './admin/Edit/Editfood';
+import Editcard from './admin/Edit/Editcard';
+import Editdress from './admin/Edit/Editdress';
+import Editlocation from './admin/Edit/Editlocation';
+import Editorganize from './admin/Edit/Editorganize';
+import Editgift from './admin/Edit/Editgift';
 
 
 
@@ -39,6 +50,7 @@ function App() {
         <Route path='/wedding_planner/:tran_id' element={<WeddingPlanner/>}/>
         <Route path='/my_wedding_planner/:tran_id' element={<MyWDP/>}/>
         <Route path='/Adminbar' element={<Adminbar/>}/>
+        {/* Admin */}
         <Route path='/Addtheme' element={<Addtheme/>}/>
         <Route path='/Addfood' element={<Addfood/>}/>
         <Route path='/Addlocation' element={<Addlocation/>}/>
@@ -57,6 +69,16 @@ function App() {
         <Route path='/WPN_photo/:userid' element={<WPN_photo/>}/>
         <Route path='/WPN_card/:userid' element={<WPN_card/>}/>
         <Route path='/WPN_gift/:userid' element={<WPN_gift/>}/>
+        {/* Edit */}
+        <Route path='/Edittheme' element={<Edittheme/>}/>
+        <Route path='/Editfood' element={<Editfood/>}/>
+        <Route path='/Editphoto' element={<Editphoto/>}/>
+        <Route path='/Editcard' element={<Editcard/>}/>
+        <Route path='/Editdress' element={<Editdress/>}/>
+        <Route path='/Editlocation ' element={<Editlocation/>}/>
+        <Route path='/Editgift' element={<Editgift/>}/>
+        <Route path='/Editorganize' element={<Editorganize/>}/>
+
       </Routes>
     </>
   );
