@@ -30,6 +30,7 @@ function ResultWeddingPlanner() {
 
   // console.log(userid)
   console.log(transaction);
+  if(!transaction) return <></>
 
   return (
     <>

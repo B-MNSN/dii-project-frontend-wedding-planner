@@ -11,7 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.navbarr{
+  background-color: #E7D6CC;
+}
 .inputGuest{
   border-radius: 5px;
   border: 1px solid #ccc;

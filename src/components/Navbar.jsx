@@ -9,52 +9,29 @@ function Navbar() {
   
   const [modalShow, setModalShow] = useState(false);
 
-  const [navSize, setnavSize] = useState("10rem");
-  const [navColor, setnavColor] = useState("#fff");
+  // const [navColor, setnavColor] = useState("#fff");
 
-  const [user, setUser] = useState();
-  const [token, setToken] = useState(localStorage.getItem("status"));
-
-  const listenScrollEvent = () => {
-    window.scrollY > 30 ? setnavColor("#E7D6CC") : setnavColor("#fff");
-    // window.scrollY > 10 ? setnavSize("5rem") : setnavSize("10rem");
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent);
-    return () => {
-      window.removeEventListener("scroll", listenScrollEvent);
-    };
-  }, []);
-
-  useEffect(() => {
-    async function  getUser(){
-        try{
-            const user = await axios.get('http://localhost:4001/login/getuser',{
-                headers: {
-                    'token': token
-                }
-            });
-            setUser(user.data)
-            // console.log(user)
-        }catch (error){
-            console.error(error)
-        }
-    };
-    getUser();
-  },[]);
-
+  // const listenScrollEvent = () => {
+  //   window.scrollY > 30 ? setnavColor("#E7D6CC") : setnavColor("#fff");
+  // };
+  // useEffect(() => {
+  //   window.addEventListener("scroll", listenScrollEvent);
+  //   return () => {
+  //     window.removeEventListener("scroll", listenScrollEvent);
+  //   };
+  // }, []);
 
 
   return (
     <>
       <div className="navbarr sticky-top shadow" style={{
-          backgroundColor: navColor,
-          transition: "all 1s"
+          // backgroundColor: navColor,
+          // transition: "all 1s"
         }}>
         <div className="d-flex justify-content-around p-2">
           <a href="/home"><img src={logo} alt="logo" href="" width={100} /></a>
           <div className="">
-            <a href="/" className="mx-3 text-dark text-decoration-none">
+            <a href="/home" className="mx-3 text-dark text-decoration-none">
               HOME
             </a>
             <a href={`/WPN_Guest`} className="mx-3 text-dark text-decoration-none">
