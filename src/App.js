@@ -15,6 +15,14 @@ import Addphoto from './admin/Add/Addphoto';
 import Addcard from './admin/Add/Addcard';
 import Addgift from './admin/Add/Addgift';
 import Addorganize from './admin/Add/Addorganize';
+import WPN_Guest from './pages/WPN_Guest';
+import WPN_theme from './pages/WPN_theme';
+import WPN_food from './pages/WPN_food';
+import WPN_location from './pages/WPN_location';
+import WPN_dress from './pages/WPN_dress';
+import WPN_photo from './pages/WPN_photo';
+import WPN_card from './pages/WPN_card';
+import WPN_gift from './pages/WPN_gift';
 
 
 
@@ -26,6 +34,7 @@ function App() {
         {/* <Route path='/' element={<Home />} /> */}
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+
         <Route path='/home' element={<Home/>}/>
         <Route path='/wedding_planner/:tran_id' element={<WeddingPlanner/>}/>
         <Route path='/my_wedding_planner/:tran_id' element={<MyWDP/>}/>
@@ -38,6 +47,16 @@ function App() {
         <Route path='/Addcard' element={<Addcard/>}/>
         <Route path='/Addgift' element={<Addgift/>}/>
         <Route path='/Addorganize' element={<Addorganize/>}/>
+
+        {/*WEDDING_PLANNER */}
+        <Route path='/WPN_Guest' element={<WPN_Guest/>}/>
+        <Route path='/WPN_theme/:userid' element={<WPN_theme/>}/>
+        <Route path='/WPN_food/:userid' element={<WPN_food/>}/>
+        <Route path='/WPN_location/:userid' element={<WPN_location/>}/>
+        <Route path='/WPN_dress/:userid' element={<WPN_dress/>}/>
+        <Route path='/WPN_photo/:userid' element={<WPN_photo/>}/>
+        <Route path='/WPN_card/:userid' element={<WPN_card/>}/>
+        <Route path='/WPN_gift/:userid' element={<WPN_gift/>}/>
       </Routes>
     </>
   );

@@ -1,10 +1,10 @@
-import DetailsTheme from "./DetailsTheme";
-import Form from "react-bootstrap/Form";
-import axios, { AxiosError } from "axios";
-import { useEffect, useState } from "react";
-import SelectStep from "../SelectSteap";
+import { useState, useEffect } from "react";
+import SelectStep from "../components/SelectSteap";
+import axios from 'axios';
+import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
-function DetailsGuest({ display}) {
+function WPN_Guest(){
     const [guest, setGuest] = useState();
     const [theme, setTheme] = useState('');
     const [work, setWork] = useState('');
@@ -15,15 +15,17 @@ function DetailsGuest({ display}) {
     const [card, setCard] = useState('');
     const [gift, setGift] = useState('');
 
+    const [user, setUser] = useState();
+    const [token, setToken] = useState(localStorage.getItem("status"));
+    const [user_id,setuser_id] = useState('');
+
+
     const handChange = (fn) => {
         return (event) => {
           fn(event.target.value);
           console.log(event.target.value)
         };
     };
-
-    const [user, setUser] = useState();
-    const [token, setToken] = useState(localStorage.getItem("status"));
 
     useEffect(() => {
         async function  getUser(){
@@ -34,6 +36,7 @@ function DetailsGuest({ display}) {
                     }
                 });
                 setUser(user.data)
+                setuser_id(user.data._id);
                 console.log(user)
             }catch (error){
                 console.error(error)
@@ -41,7 +44,8 @@ function DetailsGuest({ display}) {
         };
         getUser();
     },[]);
-    console.log(user)
+
+    console.log(user_id);
 
     const next = async (e) => {
         try{
@@ -58,8 +62,7 @@ function DetailsGuest({ display}) {
                 gift
         
             });
-            console.log(transaction)
-
+            console.log(transaction);
         } 
         catch (error){
             console.error(error);
@@ -68,32 +71,33 @@ function DetailsGuest({ display}) {
     };
 
     return(
-        <>
+        <>  <Navbar/>
             <div className="d-flex justify-content-center mt-5 mx-5 row">
                 <SelectStep/>
-                <div style={{display}} className="border bg-secondary rounded-2 bg-opacity-10 col-md-7 shadow">
-                    <from className="row d-flex">
+                <div className="border bg-secondary rounded-2 bg-opacity-10 col-md-7 shadow">
+                    {/* <from className="row d-flex"> */}
                         <div className="col-12">
                             <h3 className='ms-5 mt-4'>แขก</h3>
                         </div>
                         <div className='col d-flex flex-wrap justify-content-center'>
-                            <Form className="col-md-3 mx-3 mt-4">
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>จำนวนแขก</Form.Label>
-                                    <Form.Control type="text" placeholder="" onChange={handChange(setGuest)}/>
-                                </Form.Group>
-                            </Form>
+                            <form className="col-md-3 mx-3 mt-4">
+                                <div className="mb-3">
+                                    <label>จำนวนแขก</label>
+                                    <input type="text" placeholder="" onChange={handChange(setGuest)} />
+                                </div>
+                            </form>
                         </div>
                         <div className='d-flex justify-content-end'>
                             <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1 '>Skip</button>
-                            <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1 ' onClick={next}>Next</button>
+                            <Link to={`/WPN_theme/${user_id}`} >
+                                <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1 ' onClick={next}>Next</button>
+                            </Link>
                         </div>
-                    </from>
+                    {/* </from> */}
                     
                 </div>
             </div>
         </>
-    );
-    
+    )
 };
-export default DetailsGuest;
+export default WPN_Guest;
