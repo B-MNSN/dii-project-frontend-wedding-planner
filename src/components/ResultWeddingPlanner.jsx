@@ -48,7 +48,7 @@ function ResultWeddingPlanner() {
           <p><strong>ของชำร่วย:</strong> {transaction.gift}</p>
           <div className="d-flex justify-content-between">
             <p><strong>งบประมาณการจัดงาน</strong></p>
-            <div className="border px-4">x,xxxx,xxx บาท</div>
+            <div className="border px-5 rounded-2">x,xxxx,xxx บาท</div>
           </div>
           <div className='col d-flex justify-content-end mt-3'>
                 <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1'>Cancle</button>

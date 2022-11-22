@@ -90,7 +90,7 @@ function SelectStep({onStep}) {
                     </div>
                     <div className="col mt-4">
                         <ul className="p-0">
-                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 1 ? 'menulistActive' : ''} `} onClick={onSelect}>แขก</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${!onStep ? 'menulistActive' : ''} `} onClick={onSelect}>แขก</li>
                             <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 2 ? 'menulistActive' : ''} `}  onClick={onSelect}>ธีม</li>
                             {/* <Link to="/WPN_Guest">
                                 <li className={`menulist rounded-4 ps-4 py-2 ${display === 'งานเช้า/งานเย็น' ? 'menulistActive' : ''} `} onClick={onSelect}>งานเช้า/งานเย็น</li>

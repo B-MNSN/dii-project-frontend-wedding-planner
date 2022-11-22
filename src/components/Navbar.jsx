@@ -9,17 +9,12 @@ function Navbar() {
   
   const [modalShow, setModalShow] = useState(false);
 
-  // const [navColor, setnavColor] = useState("#fff");
+  const clear = () => {
+    window.localStorage.clear();
+    window.location.reload();
+    window.location.href('/login')
+  };
 
-  // const listenScrollEvent = () => {
-  //   window.scrollY > 30 ? setnavColor("#E7D6CC") : setnavColor("#fff");
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("scroll", listenScrollEvent);
-  //   return () => {
-  //     window.removeEventListener("scroll", listenScrollEvent);
-  //   };
-  // }, []);
 
 
   return (
@@ -42,7 +37,16 @@ function Navbar() {
             </text>
           </div>
           <div>
-            <HiOutlineUserCircle size={"30"} />
+            <div>
+              <div data-bs-toggle="dropdown" aria-expanded="false">
+                <HiOutlineUserCircle size={"30"} />
+              </div>
+              <ul className="dropdown-menu dropdown-menu-end ">
+                <li><p className="dropdown-item">User name</p></li>
+                <li><p className="dropdown-item">gmail</p></li>
+                <li><p className="dropdown-item text-danger" onClick={clear}>LOGOUT</p></li>
+              </ul>
+          </div>
           </div>
         </div>
       </div>

@@ -83,6 +83,8 @@ function WPN_food(){
 
     };
 
+    if(!foods && !transaction) return <></>
+
     return(
         <>
             <Navbar />

@@ -70,6 +70,8 @@ function WPN_card(){
         };
         getTransaction();
     },[]);
+
+    if(!card && !transaction) return <></>
     
     const next = async (e) => {
         try {

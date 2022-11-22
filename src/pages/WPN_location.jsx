@@ -85,6 +85,8 @@ function WPN_location(){
 
     };
 
+    if(!location && !transaction) return <></>
+
     return(
         <>
             <Navbar/>

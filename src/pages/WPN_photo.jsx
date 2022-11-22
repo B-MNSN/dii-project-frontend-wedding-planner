@@ -84,6 +84,8 @@ function WPN_photo(){
 
     };
 
+    if(!photo && !transaction) return <></>
+
     return(
         <>
             <Navbar />

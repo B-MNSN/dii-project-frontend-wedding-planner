@@ -70,6 +70,7 @@ function WPN_gift(){
         getTransaction();
     },[]);
 
+    if(!gift && !transaction) return <></>
 
     return(
         <>

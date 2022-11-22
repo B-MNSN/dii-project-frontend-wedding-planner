@@ -84,6 +84,8 @@ function WPN_dress(){
 
     };
 
+    if(!dressWedding && !transaction) return <></>
+
     return(
         <>
             <Navbar/>

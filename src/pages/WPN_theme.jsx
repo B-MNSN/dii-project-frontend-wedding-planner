@@ -83,6 +83,8 @@ function WPN_theme(){
 
     };
 
+    if(!theme && !transaction) return <></>
+
     return(
         <>  
             <Navbar/>
