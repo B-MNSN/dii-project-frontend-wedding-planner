@@ -8,6 +8,13 @@ export default function Addorganize({ className }) {
     const [organiz_img, setOrganizImg] = useState('');
     const [organiz_name, setOrganizName] = useState('');
     const [organiz_description, setOrganizDescription] = useState('');
+    const [organiz_theme, setOrganizTheme] = useState('');
+    const [organiz_food, setOrganizFood] = useState('');
+    const [organiz_location, setOrganizLocation] = useState('');
+    const [organiz_dress, setOrganizDress] = useState('');
+    const [organiz_photo, setOrganizPhoto] = useState('');
+    const [organiz_card, setOrganizCard] = useState('');
+    const [organiz_gift, setOrganizGift] = useState('');
     const inputFileRef = useRef(null)
     
     const handChange = (fn) => {
@@ -23,6 +30,13 @@ export default function Addorganize({ className }) {
             organiz_img,
             organiz_name,
             organiz_description,
+            organiz_theme,
+            organiz_food,
+            organiz_location,
+            organiz_dress,
+            organiz_photo,
+            organiz_card,
+            organiz_gift
           });
           console.log(addOrganize);
           localStorage.setItem("status", JSON.stringify(addOrganize.data.status));
@@ -69,10 +83,31 @@ export default function Addorganize({ className }) {
                             <div class="form-outline m-4 d-flex justify-content-end">
                                 <textarea class="form-control" id="textAreaExample" rows="4" placeholder='รายละเอียด-องค์กร-บริษัท' value={organiz_description} onChange={handChange(setOrganizDescription)}></textarea>
                             </div>
+                            <div class="form-outline m-4 d-flex justify-content-end">
+                                <input class="form-control" id="textAreaExample" rows="4" placeholder='ธีม' value={organiz_theme} onChange={handChange(setOrganizTheme)}></input>
+                            </div>
+                            <div class="form-outline m-4 d-flex justify-content-end">
+                                <input class="form-control" id="textAreaExample" rows="4" placeholder='อาหาร' value={organiz_food} onChange={handChange(setOrganizFood)}></input>
+                            </div>
+                            <div class="form-outline m-4 d-flex justify-content-end">
+                                <input class="form-control" id="textAreaExample" rows="4" placeholder='สถานที่' value={organiz_location} onChange={handChange(setOrganizLocation)}></input>
+                            </div>
+                            <div class="form-outline m-4 d-flex justify-content-end">
+                                <input class="form-control" id="textAreaExample" rows="4" placeholder='ชุดแต่งงาน' value={organiz_dress} onChange={handChange(setOrganizDress)}></input>
+                            </div>
+                            <div class="form-outline m-4 d-flex justify-content-end">
+                                <input class="form-control" id="textAreaExample" rows="4" placeholder='รูป pre wedding' value={organiz_photo} onChange={handChange(setOrganizPhoto)}></input>
+                            </div>
+                            <div class="form-outline m-4 d-flex justify-content-end">
+                                <input class="form-control" id="textAreaExample" rows="4" placeholder='การ์ดแต่งงาน' value={organiz_card} onChange={handChange(setOrganizCard)}></input>
+                            </div>
+                            <div class="form-outline m-4 d-flex justify-content-end">
+                                <input class="form-control" id="textAreaExample" rows="4" placeholder='ของชำร่วย' value={organiz_gift} onChange={handChange(setOrganizGift)}></input>
+                            </div>
                            
                             <div class="d-flex m-4 d-flex justify-content-end">
                                 <a href="/Adminbar"><button class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button></a>
-                                <button type="button" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="submit" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Confirm
                                 </button>
 

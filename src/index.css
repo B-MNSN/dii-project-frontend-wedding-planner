@@ -58,7 +58,7 @@ code {
 } */
 .menulistActive{
   background-color: #A5BBCA !important;
-  color: #fff !important;
+  color: #000 !important;
 }
 .menulistNotActive {
   color: #8A9AA0;
@@ -146,7 +146,7 @@ box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
 }
 .box-add{
   width: 1200px;
-  height: 500px;
+  /* height: 500px; */
   background-color: #F1EBE9;
 }
 

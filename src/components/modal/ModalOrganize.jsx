@@ -2,13 +2,16 @@ import Modal from 'react-bootstrap/Modal';
 import check from '../../image/check.png';
 import { useState } from "react";
 import ModalSuccess from './ModalSuccess';
+import DetailModalOrg from './DetailModalOrg';
 
-function ModalOrganize({ show, onHide }) {
+function ModalOrganize({ show, onHide,orgName }) {
     const [modalShow, setModalShow] = useState(false);
     const propSimulator = { onHide, show };
     const colse = () => {
         window.location.href = '/home';
     }
+    if(!orgName) return <></>
+    // console.log(orgName)
 
     return(
         <>
@@ -20,16 +23,13 @@ function ModalOrganize({ show, onHide }) {
                                 <h4>Organize</h4>
                             </div>
                         </div>
-                        <div className='mt-3 d-flex flex-wrap justify-content-around'> 
-                            <div className='col-3'>
-                                <div className='bg-secondary rounded-2 d-flex justify-content-center'>
-                                    <img src={check} alt='check' width={150} className='img-fluid'/>
-                                </div>
-                                <div className='d-flex justify-content-center'>
-                                    <p>Lorem Ipsum 100%</p>
-                                </div>
+                        <div className='mt-3 d-flex flex-wrap justify-content-around'>
+                            <div className='col d-flex justify-content-center align-items-center'>
+                                {orgName.map((org) => {
+                                    return <DetailModalOrg key={org._id} orgName={org}/>
+                                })}
+                                    
                             </div>
-
                         </div>
                         <div className='col d-flex justify-content-center mt-3'>
                             <button className='btnCancel border-0 rounded-2 text-light m-2 px-4 py-1' onClick={colse}>Cancel</button>

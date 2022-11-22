@@ -2,6 +2,7 @@ import Modal from "./modal/ModalOrganize";
 import { useState,useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import axios, { AxiosError } from "axios";
+import ModalOrganize from "./modal/ModalOrganize";
 
 function ResultWeddingPlanner() {
   const [modalShow, setModalShow] = useState(false);
@@ -9,40 +10,73 @@ function ResultWeddingPlanner() {
   const [token, setToken] = useState(localStorage.getItem("status"));
   const { userid } = useParams();
   const [transaction, setTransaction] = useState();
+  const [oganize, setOganize] = useState([]);
   const [totalPrice, setTotalPrice] = useState();
+  const [orgName, setOrgName] = useState([]);
+  const [matchOrg, setMatchOrg] = useState([]);
+  let arr =[];
+  
+  // console.log(userid);
+  useEffect(() => {
+    async function getTransaction(){
+        try{
+            const tran = await axios.get(`http://localhost:4001/transaction/getuser/${userid}`,{
+                headers: {
+                    'token': token
+                }
+            });
+            setTransaction(tran.data[0])
+            // console.log(tran)
+
+        }catch (error){
+            console.error(error)
+        }
+    };
+    getTransaction();
+  },[]);
 
   useEffect(() => {
-        async function getTransaction(){
-            try{
-                const tran = await axios.get(`http://localhost:4001/transaction/getuser/${userid}`,{
-                    headers: {
-                        'token': token
-                    }
-                });
-                setTransaction(tran.data[0])
-                console.log(transaction)
+    async function getOganize(){
+        try{
+            const oganize = await axios.get(`http://localhost:4001/organiz`,{
+                headers: {
+                    'token': token
+                }
+            });
+            setOganize(oganize.data)
 
-            }catch (error){
-                console.error(error)
-            }
-        };
-        getTransaction();
-  },[]);
+        }catch (error){
+            console.error(error)
+        }
+    };
+    getOganize();
+},[]);
 
   useEffect(() => {
     const budget = () => {
         const result = (transaction.theme_price+transaction.location_price+transaction.dress_price+transaction.photo_price)+(transaction.guest*(transaction.food_price+transaction.card_price+transaction.gift_price));
-        setTotalPrice(result);
+        setTotalPrice(result);    
     };
+    const checkOrg = () => {
+      for(let i=0; i<oganize.length; i++){
+        if(transaction.theme === oganize[i].organiz_theme && transaction.food === oganize[i].organiz_food && transaction.location === oganize[i].organiz_location && transaction.dress === oganize[i].organiz_dress && transaction.photo === oganize[i].organiz_photo && transaction.gift === oganize[i].organiz_gift && transaction.card === oganize[i].organiz_card){
+          console.log(oganize[i]);
+          arr.push(oganize[i]);
+          setOrgName(arr);
+
+        }
+      } 
+  }
     if(transaction){
       budget();
+      checkOrg();
     }
   },[transaction]);
 
-  console.log(totalPrice);
-  // console.log(userid)
-  console.log(transaction);
-  if(!transaction) return <></>
+
+  // console.log(orgName)
+  
+  if(!transaction && !orgName) return <></>
 
   return (
     <>
@@ -63,14 +97,14 @@ function ResultWeddingPlanner() {
             <div className="border px-5 rounded-2">{totalPrice} บาท</div>
           </div>
           <div className='col d-flex justify-content-end mt-3'>
-                <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1'>Cancle</button>
+                <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1'>Cancel</button>
                 <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1' onClick={() => setModalShow(true)}>Next</button>
           </div>
         </div>
       </div>
-      <Modal show={modalShow} onHide={() => setModalShow(false)}/>
+      <Modal show={modalShow} onHide={() => setModalShow(false) } orgName={orgName}/>
     </>
   );
 }
 
-export default ResultWeddingPlanner;
+export default ResultWeddingPlanner

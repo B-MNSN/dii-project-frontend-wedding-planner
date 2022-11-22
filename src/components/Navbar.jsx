@@ -8,11 +8,30 @@ function Navbar() {
   // const { tran_id } = useParams();
   
   const [modalShow, setModalShow] = useState(false);
-
+  const [token, setToken] = useState(localStorage.getItem("status"));
   const clear = () => {
     window.localStorage.clear();
     window.location.reload();
   };
+
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+        async function  getUser(){
+            try{
+                const user = await axios.get('http://localhost:4001/login/getuser',{
+                    headers: {
+                        'token': token
+                    }
+                });
+                setUser(user)
+                console.log(user)
+            }catch (error){
+                console.error(error)
+            }
+        };
+        getUser();
+  },[]);
 
   return (
     <>

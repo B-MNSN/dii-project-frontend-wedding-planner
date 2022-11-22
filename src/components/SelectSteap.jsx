@@ -26,6 +26,7 @@ function SelectStep({onStep}) {
 
     const [user, setUser] = useState();
     const [user_id,setuser_id] = useState('');
+    const [userName, setUserName] = useState('');
 
     useEffect(() => {
         async function  getUser(){
@@ -37,7 +38,8 @@ function SelectStep({onStep}) {
                 });
                 setUser(user)
                 setuser_id(user.data._id);
-                // console.log(user)
+                setUserName(user.data);
+                console.log(userName)
             }catch (error){
                 console.error(error)
             }
@@ -79,14 +81,12 @@ function SelectStep({onStep}) {
         setOpenLocation(!openLocation)
     }
 
-
-
     return(
         <>
             <div className="border bg-secondary rounded-2 bg-opacity-10 col-md-4 shadow me-3">
                 <div className="row m-4">
                     <div className="col-12 d-flex justify-content-center">
-                        <h4>User name</h4>
+                        <h4>{userName.user_name}</h4>
                     </div>
                     <div className="col mt-4">
                         <ul className="p-0">
