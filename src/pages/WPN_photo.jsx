@@ -18,6 +18,10 @@ function WPN_photo(){
     const [tranid, setTranid] = useState('');
     const [onStep,setOnStep] = useState('');
 
+    if(!token){
+        window.location.href='/login'
+    }
+
     useEffect(() => {
         async function getPhoto(){
          try {

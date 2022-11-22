@@ -18,6 +18,10 @@ function WPN_theme(){
     const [transaction, setTransaction] = useState();
     const [tranid, setTranid] = useState('')
 
+    if(!token){
+        window.location.href='/login'
+    }
+
     useEffect(() => {
        async function getTheme(){
         try {

@@ -18,6 +18,10 @@ function WPN_location(){
     const [transaction, setTransaction] = useState();
     const [tranid, setTranid] = useState('')
 
+    if(!token){
+        window.location.href='/login'
+    }
+
     useEffect(() => {
         async function getLocation(){
          try {

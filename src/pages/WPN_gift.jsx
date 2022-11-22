@@ -19,6 +19,10 @@ function WPN_gift(){
     const [transaction, setTransaction] = useState();
     const [tranid, setTranid] = useState('')
 
+    if(!token){
+        window.location.href='/login'
+    }
+
 
     useEffect(() => {
         async function getGift(){

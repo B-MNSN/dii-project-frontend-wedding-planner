@@ -18,6 +18,10 @@ function WPN_card(){
     const [transaction, setTransaction] = useState();
     const [tranid, setTranid] = useState('')
 
+    if(!token){
+        window.location.href='/login'
+    }
+
     useEffect(() => {
         async function getCard(){
          try {
@@ -44,6 +48,7 @@ function WPN_card(){
                 });
                 setUser(user.data)
                 setuser_id(user.data._id);
+                setToken(user.data)
                 console.log(user)
             }catch (error){
                 console.error(error)

@@ -19,6 +19,10 @@ function WPN_Guest(){
     const [token, setToken] = useState(localStorage.getItem("status"));
     const [user_id,setuser_id] = useState('');
 
+    if(!token){
+        window.location.href='/login'
+    }
+
 
     const handChange = (fn) => {
         return (event) => {

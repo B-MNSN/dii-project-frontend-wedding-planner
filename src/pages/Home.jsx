@@ -1,7 +1,31 @@
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import imgWedding from '../image/wedding.jpg';
+import axios from "axios";
 
 function Home() {
+    const [token, setToken] = useState(localStorage.getItem("status"));
+
+    if(!token){
+        window.location.href='/login'
+    }
+
+    useEffect(() => {
+        async function  getUser(){
+            try{
+                const user = await axios.get('http://localhost:4001/login/getuser',{
+                    headers: {
+                        'token': token
+                    }
+                });
+                setToken(user.data)
+            }catch (error){
+                console.error(error)
+            }
+        };
+        getUser();
+    },[]);
+
     return(
         <>
             <Navbar/>
