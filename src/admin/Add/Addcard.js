@@ -25,6 +25,7 @@ export default function Addcard({ className }) {
         try {
             e.preventDefault();
             const addCard = await axios.post("http://localhost:4001/card", {
+                card_img,
                 card_name,
                 card_description,
                 card_price
@@ -82,7 +83,7 @@ export default function Addcard({ className }) {
                             </div>
                             <div class="d-flex m-4 d-flex justify-content-end">
                                 <a href="/Adminbar"><button class="btnCancel border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg">Cancel</button></a>
-                                <button type="button" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="submit" class="btnConfirm border-0 rounded-2 text-light m-2 px-4 py-1 btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Confirm
                                 </button>
 
