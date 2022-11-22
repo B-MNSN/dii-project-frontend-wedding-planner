@@ -5,6 +5,7 @@ import Modal from '../components/modal/ModalLocation';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useParams } from 'react-router-dom';
+import Loading from "./Loading";
 
 function WPN_location(){
     const [modalShow, setModalShow] = useState(false);
@@ -97,11 +98,17 @@ function WPN_location(){
                         <div className="col-12">
                             <h3 className='ms-5 mt-4'>สถานที่</h3>
                         </div>
-                        <div className='col d-flex flex-wrap ms-5'>
-                            {location.map((locations) => (
-                                <Location key={locations._id} location={locations}/>
-                            ))}
-                        </div>
+                        {
+                            location.length !== 0 ?
+                            <div className='col d-flex flex-wrap ms-5'>
+                                {location.map((locations) => (
+                                    <Location key={locations._id} location={locations}/>
+                                ))}
+                            </div>:
+                            <div className="col-12 mt-5 d-flex justify-content-center">
+                                <Loading/>
+                            </div>
+                        }
                         <div className='d-flex justify-content-end'>
                             <Link to={`/WPN_dress/${userid}`}>
                                 <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1' onClick={next}>Skip</button>

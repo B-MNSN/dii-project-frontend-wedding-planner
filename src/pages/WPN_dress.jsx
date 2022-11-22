@@ -5,6 +5,7 @@ import DressWedding from '../components/detailList/DressWedding';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useParams } from 'react-router-dom';
+import Loading from "./Loading";
 
 function WPN_dress(){
     const [modalShow, setModalShow] = useState(false);
@@ -96,11 +97,17 @@ function WPN_dress(){
                         <div className="col-12">
                             <h3 className='ms-5 mt-4'>ชุดแต่งงาน</h3>
                         </div>
-                        <div className='col d-flex flex-wrap ms-5'>
-                            {dressWedding.map((dress) => (
-                                <DressWedding key={dress._id} dressWedding={dress}/>
-                            ))}
-                        </div>
+                        {
+                            dressWedding.length !== 0 ?
+                            <div className='col d-flex flex-wrap ms-5'>
+                                {dressWedding.map((dress) => (
+                                    <DressWedding key={dress._id} dressWedding={dress}/>
+                                ))}
+                            </div>:
+                            <div className="col d-flex justify-content-center mt-5">
+                                <Loading/>
+                            </div>
+                        }
                         <div className='d-flex justify-content-end'>
                             <Link to={`/WPN_photo/${userid}`}>
                                 <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1' onClick={next}>Skip</button>

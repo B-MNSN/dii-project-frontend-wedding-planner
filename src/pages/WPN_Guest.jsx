@@ -88,7 +88,6 @@ function WPN_Guest(){
                             </form>
                         </div>
                         <div className='d-flex justify-content-end'>
-                            <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1 '>Skip</button>
                             <Link to={`/WPN_theme/${user_id}`} >
                                 <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1 ' onClick={next}>Next</button>
                             </Link>

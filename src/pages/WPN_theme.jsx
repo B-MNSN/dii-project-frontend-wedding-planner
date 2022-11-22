@@ -5,6 +5,7 @@ import Theme from '../components/detailList/Theme';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useParams } from 'react-router-dom';
+import Loading from "./Loading";
 
 function WPN_theme(){
     const [modalShow, setModalShow] = useState(false);
@@ -95,11 +96,19 @@ function WPN_theme(){
                         <div className="col-12">
                             <h3 className='ms-5 mt-4'>ธีม</h3>
                         </div>
-                        <div className='col d-flex flex-wrap ms-5'>
+                        {
+                            theme.length !== 0 ? 
+                            <div className='col d-flex flex-wrap ms-5'>
+                            
                             {theme.map((themes) => (
                                 <Theme key={themes._id} theme={themes}/>
                             ))}
-                        </div>
+                            </div>:
+                            <div className="col d-flex justify-content-center mt-5">
+                                <Loading/>
+                            </div>
+                            
+                        }
                         <div className='d-flex justify-content-end'>
                             <Link to={`/WPN_food/${user_id}`}>
                                 <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1' onClick={next}>Skip</button>

@@ -5,6 +5,7 @@ import Modal from '../components/modal/ModalCard';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useParams } from 'react-router-dom';
+import Loading from "./Loading";
 
 function WPN_card(){
     const [modalShow, setModalShow] = useState(false);
@@ -97,11 +98,17 @@ function WPN_card(){
                         <div className="col-12">
                             <h3 className='ms-5 mt-4'>การ์ดแต่งงาน</h3>
                         </div>
-                        <div className='col d-flex flex-wrap ms-5'>
-                            {card.map((cards) => (
-                                <CardWedding key={cards._id} card={cards}/>
-                            ))}
-                        </div>
+                        {
+                            card.length !== 0 ?
+                            <div className='col d-flex flex-wrap ms-5'>
+                                {card.map((cards) => (
+                                    <CardWedding key={cards._id} card={cards}/>
+                                ))}
+                            </div>:
+                            <div className="col d-flex justify-content-center mt-5">
+                                <Loading/>
+                            </div>
+                        }
                         <div className='d-flex justify-content-end'>
                             <Link to={`/WPN_gift/${userid}`}>
                                 <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1'>Skip</button>

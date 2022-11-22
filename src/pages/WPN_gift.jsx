@@ -5,6 +5,8 @@ import Gift from '../components/detailList/Gift';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useParams } from 'react-router-dom';
+import Loading from "./Loading";
+
 
 function WPN_gift(){
     const [modalShow, setModalShow] = useState(false);
@@ -82,14 +84,20 @@ function WPN_gift(){
                         <div className="col-12">
                             <h3 className='ms-5 mt-4'>ของชำร่วย</h3>
                         </div>
-                        <div className='col d-flex flex-wrap ms-5'>
-                            {gift.map((gifts) => (
-                                <Gift key={gifts._id} gift={gifts}/>
-                            ))}
-                        </div>
+                        {
+                            gift.length !== 0 ?
+                            <div className='col d-flex flex-wrap ms-5'>
+                                {gift.map((gifts) => (
+                                    <Gift key={gifts._id} gift={gifts}/>
+                                ))}
+                            </div>:
+                            <div className="col-12 mt-5 d-flex justify-content-center">
+                                <Loading/>
+                            </div>
+                        }
                         <div className='d-flex justify-content-end'>
                             <Link to={`/my_wedding_planner/${userid}`}>
-                              <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1' >Next</button>  
+                              <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1' >Finish</button>  
                             </Link>
                             
                         </div>

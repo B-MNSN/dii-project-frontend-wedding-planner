@@ -5,6 +5,7 @@ import Food from '../components/detailList/Food';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useParams } from 'react-router-dom';
+import Loading from "./Loading";
 
 function WPN_food(){
     const [modalShow, setModalShow] = useState(false);
@@ -95,11 +96,18 @@ function WPN_food(){
                         <div className="col-12">
                             <h3 className='ms-5 mt-4'>อาหาร</h3>
                         </div>
-                        <div className='col d-flex flex-wrap ms-5'>
-                            {foods.map((food) => (
-                                <Food key={food._id} foods={food}/>
-                            ))}
-                        </div>
+                        {
+                            foods.length !== 0 ?
+                            <div className='col d-flex flex-wrap ms-5'>
+                                {foods.map((food) => (
+                                    <Food key={food._id} foods={food}/>
+                                ))}
+                            </div>:
+                            <div className="col d-flex justify-content-center mt-5">
+                                <Loading/>
+                            </div>
+
+                        }
                         <div className='d-flex justify-content-end'>
                             <Link to={`/WPN_location/${user_id}`}>
                                 <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1' onClick={next}>Skip</button>

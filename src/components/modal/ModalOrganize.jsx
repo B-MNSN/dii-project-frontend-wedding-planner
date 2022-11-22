@@ -7,7 +7,7 @@ function ModalOrganize({ show, onHide }) {
     const [modalShow, setModalShow] = useState(false);
     const propSimulator = { onHide, show };
     const colse = () => {
-        window.location.href = '/';
+        window.location.href = '/home';
     }
 
     return(

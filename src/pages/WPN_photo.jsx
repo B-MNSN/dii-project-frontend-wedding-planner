@@ -5,6 +5,7 @@ import Photo from '../components/detailList/Photo';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import { Link, useParams } from 'react-router-dom';
+import Loading from "./Loading";
 
 function WPN_photo(){
     const [modalShow, setModalShow] = useState(false);
@@ -96,11 +97,17 @@ function WPN_photo(){
                         <div className="col-12">
                             <h3 className='ms-5 mt-4'>ถ่ายรูป Pre-Wedding</h3>
                         </div>
-                        <div className='col d-flex flex-wrap ms-5'>
-                            {photo.map((photos) => (
-                                <Photo key={photos._id} photo={photos}/>
-                            ))}
-                        </div>
+                        {
+                            photo.length !== 0 ?
+                            <div className='col d-flex flex-wrap ms-5'>
+                                {photo.map((photos) => (
+                                    <Photo key={photos._id} photo={photos}/>
+                                ))}
+                            </div>:
+                            <div className="col-12 mt-5 d-flex justify-content-center">
+                                <Loading/>
+                            </div>
+                        }
                         <div className='d-flex justify-content-end'>
                             <Link to={`/WPN_card/${userid}`}>
                                 <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1' onClick={next}>Skip</button>
