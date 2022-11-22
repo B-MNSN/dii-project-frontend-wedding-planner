@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import logo from "../../image/logo_cusu.png";
 import { BiImageAdd } from "react-icons/bi";
 import axios, { AxiosError } from "axios";
@@ -6,9 +6,11 @@ import { HiCheckCircle } from "react-icons/hi";
 
 
 export default function Addphoto({ className }) {
+    const [photo_img, setPhotoImg] = useState('');
     const [photo_name, setPhotoName] = useState('');
     const [photo_description, setPhotoDescription] = useState('');
     const [photo_price, setPhotoPrice] = useState('');
+    const inputFileRef = useRef(null)
 
     const handChange = (fn) => {
         return (event) => {
@@ -20,6 +22,7 @@ export default function Addphoto({ className }) {
         try {
           e.preventDefault();
           const addPhoto = await axios.post("http://localhost:4001/photo", {
+            photo_img,
             photo_name,
             photo_description,
             photo_price
@@ -35,6 +38,20 @@ export default function Addphoto({ className }) {
         }
       };
 
+    const fileToBase64 = (filename, filepath) => {
+        return new Promise((resolve) => {
+            var file = new File([filename], filepath);
+            var reader = new FileReader(); // Read file content on file loaded event
+            reader.onload = function (event) {
+                resolve(event.target.result);
+            }; // Convert data to base64
+            reader.readAsDataURL(file);
+        });
+    };
+    const handleChange = async (e) => {
+        setPhotoImg(await fileToBase64(inputFileRef.current.files[0]))
+    };
+
     return (
         <div className={className}>
             <form class=" background container-fluid text-center col-12" onSubmit={onSubmit}>
@@ -44,7 +61,8 @@ export default function Addphoto({ className }) {
                     <div class="border-top border-4 border-dark "></div>
 
                     <div class="col-12 d-flex justify-content-center">
-                        <button class="add-picture m-4" type="button"><h1><BiImageAdd></BiImageAdd></h1></button>
+                        <label for="addImgPhoto" class="d-flex  justify-content-center align-items-center add-picture m-4 border border-dark border-2" type="button"><h1><BiImageAdd></BiImageAdd></h1></label>
+                        <input id="addImgPhoto" type="file" className='file' ref={inputFileRef} onChange={handleChange} />
 
                         <div className="col-8">
                             <div class="m-4 d-flex justify-content-end">

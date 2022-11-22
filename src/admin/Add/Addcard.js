@@ -1,15 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useRef  } from "react"
 import logo from "../../image/logo_cusu.png";
 import { BiImageAdd } from "react-icons/bi";
 import axios, { AxiosError } from "axios";
 import { HiCheckCircle } from "react-icons/hi";
 
 export default function Addcard({ className }) {
+    const [card_img, setCardImg] = useState('');
     const [card_name, setCardName] = useState('');
     const [card_description, setCardDescription] = useState('');
     const [card_price, setCardPrice] = useState('');
     const myModal = document.getElementById('myModal')
     const myInput = document.getElementById('myInput')
+    const inputFileRef = useRef(null)
 
 
 
@@ -41,6 +43,20 @@ export default function Addcard({ className }) {
         }
     };
 
+    const fileToBase64 = (filename, filepath) => {
+        return new Promise((resolve) => {
+            var file = new File([filename], filepath);
+            var reader = new FileReader(); // Read file content on file loaded event
+            reader.onload = function (event) {
+                resolve(event.target.result);
+            }; // Convert data to base64
+            reader.readAsDataURL(file);
+        });
+    };
+    const handleChange = async (e) => {
+        setCardImg(await fileToBase64(inputFileRef.current.files[0]))
+    };
+
     return (
         <div className={className}>
             <form class=" background container-fluid text-center col-12" onSubmit={onSubmit}>
@@ -50,7 +66,8 @@ export default function Addcard({ className }) {
                     <div class="border-top border-4 border-dark "></div>
 
                     <div class="col-12 d-flex justify-content-center">
-                        <button class="add-picture m-4" type="button"><h1><BiImageAdd></BiImageAdd></h1></button>
+                        <label for="addImgCard" class="d-flex  justify-content-center align-items-center add-picture m-4 border border-dark border-2" type="button"><h1><BiImageAdd></BiImageAdd></h1></label>
+                        <input id="addImgCard" type="file" className='file' ref={inputFileRef} onChange={handleChange} />
 
                         <div className="col-8">
                             <div class="m-4 d-flex justify-content-end">
