@@ -8,7 +8,7 @@ function CardWedding({card}) {
         <>
           <div className="col-md-3 mx-3 mt-4">
             <div className="d-flex justify-content-center">
-              <img src={card.card_img} alt="check" width={150} className="img-fluid rounded-2 shadow" />
+              <img src={card.card_img} alt="check" width={150} height={150} className="rounded-2 shadow" />
             </div>
             <div
               className="d-flex justify-content-center mt-2"

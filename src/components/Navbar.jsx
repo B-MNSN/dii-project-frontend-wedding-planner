@@ -24,14 +24,18 @@ function Navbar() {
                         'token': token
                     }
                 });
-                setUser(user)
-                console.log(user)
+                setUser(user.data)
+                // console.log(user.data)
             }catch (error){
                 console.error(error)
             }
         };
         getUser();
   },[]);
+
+  console.log(user)
+
+  if(!user) return <></>
 
   return (
     <>
@@ -58,9 +62,9 @@ function Navbar() {
                 <HiOutlineUserCircle size={"30"} />
               </div>
               <ul className="dropdown-menu dropdown-menu-end ">
-                <li><p className="dropdown-item">User name</p></li>
-                <li><p className="dropdown-item">gmail</p></li>
-                <li><p className="dropdown-item text-danger" onClick={clear}>LOGOUT</p></li>
+                <li><p className="dropdown-item text-center">{user.user_name}</p></li>
+                <li><p className="dropdown-item text-center">{user.email}</p></li>
+                <li><p className="dropdown-item text-danger text-center" onClick={clear}>LOGOUT</p></li>
               </ul>
           </div>
           </div>

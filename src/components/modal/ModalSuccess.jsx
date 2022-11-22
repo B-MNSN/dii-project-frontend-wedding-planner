@@ -24,7 +24,7 @@ function ModalHowTo({ show, onHide }) {
                             <div>
                                <text>ทางเราได้รับแพลนของคุณแล้ว</text>
                                <br/>
-                                <text>ทางเราจะติดต่อคุณไปในเร็วๆนี้</text> 
+                                <text>ทางเราได้ส่งอีเมลให้คุณแล้ว</text> 
                             </div>
 
                         </div>
