@@ -10,8 +10,8 @@ function Location({location}) {
     return (
     <>
       <div className="col-md-3 mx-3 mt-4">
-        <div className="bg-secondary rounded-2 d-flex justify-content-center">
-          <img src={check} alt="check" width={150} className="img-fluid" />
+        <div className="d-flex justify-content-center">
+          <img src={location.location_img} alt="check" width={150} className="img-fluid" />
         </div>
         <div
           className="d-flex justify-content-center mt-2"

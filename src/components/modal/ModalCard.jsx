@@ -1,5 +1,4 @@
 import Modal from 'react-bootstrap/Modal';
-import viking from '../../image/viking.jpg';
 import { useState,useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import axios, { AxiosError } from "axios";
@@ -57,7 +56,7 @@ function ModalCard({ show, onHide, card }) {
                     <div className='row mx-5'>
                         <div className='col-12 d-flex justify-content-center'>
                             <div> 
-                                <img src={viking} alt='check' width={500} className='img-fluid rounded-2'/>
+                                <img src={card.card_img} alt='check' width={500} className='img-fluid rounded-2 shadow'/>
                             </div>
                         </div>
                         <div className='col-12 d-flex justify-content-center mt-4'> 

@@ -58,7 +58,7 @@ function ModalGift({ show, onHide, gift }) {
                     <div className='row mx-5'>
                         <div className='col-12 d-flex justify-content-center'>
                             <div> 
-                                <img src={viking} alt='check' width={500} className='img-fluid rounded-2'/>
+                                <img src={gift.gift_img} alt='check' width={500} className='img-fluid rounded-2 shadow'/>
                             </div>
                         </div>
                         <div className='col-12 d-flex justify-content-center mt-4'> 

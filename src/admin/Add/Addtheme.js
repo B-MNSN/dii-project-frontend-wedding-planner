@@ -16,18 +16,16 @@ export default function Addtheme({ className }) {
             fn(event.target.value);
         };
     };
-    let formData = new FormData();    //formdata object
+    
     const onSubmit = async (e) => {
         try {
-            
-            formData.append("theme_img", theme_img);   //append the values with key, value pair
-            formData.append("theme_name", theme_name);
-            formData.append("theme_description", theme_description);
-            formData.append("theme_price", theme_price);
-            console.log(formData)
             e.preventDefault();
-            const addTheme = await axios.post("http://localhost:4001/theme",{headers: { 'content-type': 'multipart/form-data' }}, {
-                formData
+            const addTheme = await axios.post("http://localhost:4001/theme", {
+                theme_img,
+                theme_name,
+                theme_description,
+                theme_price
+
             });
             console.log(addTheme);
             localStorage.setItem("status", JSON.stringify(addTheme.data.status));
@@ -66,8 +64,10 @@ export default function Addtheme({ className }) {
                     <div class="border-top border-4 border-dark "></div>
 
                     <div class="col-12 d-flex justify-content-center">
-                        <button class="add-picture m-4" type="button"><h1><BiImageAdd></BiImageAdd></h1>
-                        <input type="file" name='file' ref={inputFileRef} onChange={handleChange} /></button>
+                        <label for="addImgTheme" class="d-flex  justify-content-center align-items-center add-picture m-4 border border-dark border-2" type="button"><h1><BiImageAdd></BiImageAdd></h1>
+                            
+                        </label>
+                        <input id="addImgTheme" type="file" className='file' ref={inputFileRef} onChange={handleChange} />
                         <div className="col-8">
                             <div class="m-4 d-flex justify-content-end">
                                 <input type="text" class="  form-control q-text container-fluid" placeholder='ชื่อ-ธีม' id='title' value={theme_name} onChange={handChange(setThemeName)}></input>

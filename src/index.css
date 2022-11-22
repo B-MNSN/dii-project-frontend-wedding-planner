@@ -170,3 +170,8 @@ height: 300px;
   background: #F5ACA6;
 }
 
+.file{
+  display: none;
+  visibility: hidden;
+}
+
