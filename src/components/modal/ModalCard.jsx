@@ -33,11 +33,17 @@ function ModalCard({ show, onHide, card }) {
     const confirm = async (e) => {
         // console.log(transaction)
         try{
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=card`, {
+            const transCard = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=card`, {
                 value: card.card_name
                 
             });
-            console.log(trans);
+            console.log(transCard);
+
+            const transCardPrice = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=card_price`, {
+                value: card.card_price
+                
+            });
+            console.log(transCardPrice);
         } 
         catch (error){
             console.error(error);

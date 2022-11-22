@@ -9,6 +9,7 @@ function ResultWeddingPlanner() {
   const [token, setToken] = useState(localStorage.getItem("status"));
   const { userid } = useParams();
   const [transaction, setTransaction] = useState();
+  const [totalPrice, setTotalPrice] = useState();
 
   useEffect(() => {
         async function getTransaction(){
@@ -28,6 +29,17 @@ function ResultWeddingPlanner() {
         getTransaction();
   },[]);
 
+  useEffect(() => {
+    const budget = () => {
+        const result = (transaction.theme_price+transaction.location_price+transaction.dress_price+transaction.photo_price)+(transaction.guest*(transaction.food_price+transaction.card_price+transaction.gift_price));
+        setTotalPrice(result);
+    };
+    if(transaction){
+      budget();
+    }
+  },[transaction]);
+
+  console.log(totalPrice);
   // console.log(userid)
   console.log(transaction);
   if(!transaction) return <></>
@@ -39,7 +51,7 @@ function ResultWeddingPlanner() {
           <h2 className="mb-5">My Wedding PLanner</h2>
           <p><strong>แขก:</strong> {transaction.guest} คน</p>
           <p><strong>ธีม:</strong> {transaction.theme}</p>
-          <p><strong>งาน:</strong> งานที่เลือก</p>
+          {/* <p><strong>งาน:</strong> งานที่เลือก</p> */}
           <p><strong>อาหาร:</strong> {transaction.food}</p>
           <p><strong>สถานที่:</strong> {transaction.location}</p>
           <p><strong>ชุดแต่งงาน:</strong> {transaction.dress}</p>
@@ -48,7 +60,7 @@ function ResultWeddingPlanner() {
           <p><strong>ของชำร่วย:</strong> {transaction.gift}</p>
           <div className="d-flex justify-content-between">
             <p><strong>งบประมาณการจัดงาน</strong></p>
-            <div className="border px-5 rounded-2">x,xxxx,xxx บาท</div>
+            <div className="border px-5 rounded-2">{totalPrice} บาท</div>
           </div>
           <div className='col d-flex justify-content-end mt-3'>
                 <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1'>Cancle</button>

@@ -25,7 +25,7 @@ function Register() {
       console.log(regis);
       localStorage.setItem("status", JSON.stringify(regis.data.status));
       // setStatus(JSON.parse(localStorage.getItem("status")));
-      // window.location.href = "/login";
+      window.location.href = "/login";
     } catch (error) {
       console.error(error);
       if (error instanceof AxiosError) {

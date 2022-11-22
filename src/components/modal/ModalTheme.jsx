@@ -40,11 +40,17 @@ function ModalTheme({ show, onHide, theme }) {
     const confirm = async (e) => {
         // console.log(tranid)
         try{
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=theme`, {
+            const transTheme = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=theme`, {
                 value: theme.theme_name
                 
             });
-            console.log(trans);
+            console.log(transTheme);
+
+            const transThemePrice = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=theme_price`, {
+                value: theme.theme_price
+                
+            });
+            console.log(transThemePrice);
         } 
         catch (error){
             console.error(error);

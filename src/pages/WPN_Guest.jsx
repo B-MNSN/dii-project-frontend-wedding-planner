@@ -83,7 +83,7 @@ function WPN_Guest(){
                             <form className="col-md-3 mx-3 mt-4">
                                 <div className="mb-3">
                                     <label>จำนวนแขก</label>
-                                    <input type="text" placeholder="" onChange={handChange(setGuest)} />
+                                    <input type="text" placeholder="" onChange={handChange(setGuest)} className='border rounded-2 border-2'/>
                                 </div>
                             </form>
                         </div>

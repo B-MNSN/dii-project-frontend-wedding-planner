@@ -60,6 +60,9 @@ code {
   background-color: #A5BBCA !important;
   color: #fff !important;
 }
+.menulistNotActive {
+  color: #8A9AA0;
+}
 
 .imgWedding {
   width: 100%;

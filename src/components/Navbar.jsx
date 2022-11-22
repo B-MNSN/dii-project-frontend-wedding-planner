@@ -12,10 +12,7 @@ function Navbar() {
   const clear = () => {
     window.localStorage.clear();
     window.location.reload();
-    window.location.href('/login')
   };
-
-
 
   return (
     <>

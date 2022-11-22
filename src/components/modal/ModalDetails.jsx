@@ -33,11 +33,17 @@ function ModalDetails({ show, onHide, foods}) {
     const confirm = async (e) => {
         // console.log(transaction)
         try{
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=food`, {
+            const transFood = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=food`, {
                 value: foods.food_name
                 
             });
-            console.log(trans);
+            console.log(transFood);
+
+            const transFoodPrice = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=food_price`, {
+                value: foods.food_price
+                
+            });
+            console.log(transFoodPrice);
         } 
         catch (error){
             console.error(error);

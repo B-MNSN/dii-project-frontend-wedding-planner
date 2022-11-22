@@ -36,11 +36,17 @@ function ModalPhoto({ show, onHide, photo }) {
     const confirm = async (e) => {
         // console.log(tranid)
         try{
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=photo`, {
+            const transPhoto = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=photo`, {
                 value: photo.photo_name
                 
             });
-            console.log(trans);
+            console.log(transPhoto);
+
+            const transPhotoPrice = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=photo_price`, {
+                value: photo.photo_price
+                
+            });
+            console.log(transPhotoPrice);
         } 
         catch (error){
             console.error(error);

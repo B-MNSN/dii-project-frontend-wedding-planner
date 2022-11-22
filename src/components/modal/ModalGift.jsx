@@ -35,11 +35,17 @@ function ModalGift({ show, onHide, gift }) {
     const confirm = async (e) => {
         // console.log(transaction)
         try{
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=gift`, {
+            const transGift = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=gift`, {
                 value: gift.gift_name
                 
             });
-            console.log(trans);
+            console.log(transGift);
+
+            const transGiftPrice = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=gift_price`, {
+                value: gift.gift_price
+                
+            });
+            console.log(transGiftPrice);
         } 
         catch (error){
             console.error(error);

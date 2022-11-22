@@ -4,10 +4,10 @@ import check from '../../image/check.png';
 function ModalHowTo({ show, onHide }) {
     const propSimulator = { onHide, show };
     const colse = () => {
-        window.location.href = '/';
+        window.location.reload()
     }
     const confirm = () => {
-        window.location.href = '/';
+        window.location.href = '/home';
     }
 
     return(

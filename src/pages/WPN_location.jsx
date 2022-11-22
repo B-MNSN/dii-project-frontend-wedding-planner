@@ -103,7 +103,9 @@ function WPN_location(){
                             ))}
                         </div>
                         <div className='d-flex justify-content-end'>
-                            <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1'>Skip</button>
+                            <Link to={`/WPN_dress/${userid}`}>
+                                <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1' onClick={next}>Skip</button>
+                            </Link>
                             <Link to={`/WPN_dress/${userid}`}>
                                 <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1' onClick={next}>Next</button>
                             </Link>

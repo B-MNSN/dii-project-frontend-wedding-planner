@@ -33,11 +33,17 @@ function ModalLocation({ show, onHide, location}) {
     const confirm = async (e) => {
         console.log(tranid)
         try{
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=location`, {
+            const transLocation = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=location`, {
                 value: location.location_name
                 
             });
-            console.log(trans);
+            console.log(transLocation);
+
+            const transLocationPrice = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=location_price`, {
+                value: location.location_price
+                
+            });
+            console.log(transLocationPrice);
         } 
         catch (error){
             console.error(error);

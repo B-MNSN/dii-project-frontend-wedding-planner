@@ -90,29 +90,29 @@ function SelectStep({onStep}) {
                     </div>
                     <div className="col mt-4">
                         <ul className="p-0">
-                            <li className={`menulist rounded-4 ps-4 py-2 ${!onStep ? 'menulistActive' : ''} `} onClick={onSelect}>แขก</li>
-                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 2 ? 'menulistActive' : ''} `}  onClick={onSelect}>ธีม</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${!onStep ? 'menulistActive' : 'menulistNotActive'} `} onClick={onSelect}>แขก</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 2 ? 'menulistActive' : 'menulistNotActive'} `}  onClick={onSelect}>ธีม</li>
                             {/* <Link to="/WPN_Guest">
                                 <li className={`menulist rounded-4 ps-4 py-2 ${display === 'งานเช้า/งานเย็น' ? 'menulistActive' : ''} `} onClick={onSelect}>งานเช้า/งานเย็น</li>
                             </Link> */}
-                                <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 3 ? 'menulistActive' : ''} `} onClick={onSelect} aria-controls="example-collapse-text" >อาหาร</li>
+                                <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 3 ? 'menulistActive' : 'menulistNotActive'} `} onClick={onSelect} aria-controls="example-collapse-text" >อาหาร</li>
                                 {/* <Collapse in={open}>
                                     <ul id="example-collapse-text p-3" className="mt-2 ms-3">
                                         <li className={`menulist ps-4 py-2 rounded-4 ${display === 'ประเภทอาหาร' ? 'menulistActive' : ''} `}>ประเภทอาหาร</li>
                                         <li className={`menulist ps-4 py-2 rounded-4 ${display === 'ร้านอาหาร' ? 'menulistActive' : ''} `}>ร้านอาหาร</li>
                                     </ul>
                                 </Collapse> */}
-                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 4 ? 'menulistActive' : ''} `} onClick={onSelect} aria-controls="example-collapse-text" >สถานที่</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 4 ? 'menulistActive' : 'menulistNotActive'} `} onClick={onSelect} aria-controls="example-collapse-text" >สถานที่</li>
                                 {/* <Collapse in={openLocation}>
                                     <ul id="example-collapse-text p-3" className="mt-2 ms-3">
                                         <li className={`menulist ps-4 py-2 rounded-4 ${display === 'Outdoor/Indoor' ? 'menulistActive' : ''} `} onClick={onSelect}>Outdoor/Indoor</li>
                                         <li className={`menulist ps-4 py-2 rounded-4 ${display === 'สถานที่' ? 'menulistActive' : ''} `} onClick={onSelect}>สถานที่</li>
                                     </ul>
                                 </Collapse> */}
-                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 5 ? 'menulistActive' : ''} `} onClick={onSelect}>ชุดแต่งงาน</li>
-                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 6 ? 'menulistActive' : ''} `} onClick={onSelect}>ถ่ายรูป Pre-wedding</li>
-                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 7 ? 'menulistActive' : ''} `} onClick={onSelect}>การ์ดแต่งงาน</li>
-                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 8 ? 'menulistActive' : ''} `} onClick={onSelect}>ของชำร่วย</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 5 ? 'menulistActive' : 'menulistNotActive'} `} onClick={onSelect}>ชุดแต่งงาน</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 6 ? 'menulistActive' : 'menulistNotActive'} `} onClick={onSelect}>ถ่ายรูป Pre-wedding</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 7 ? 'menulistActive' : 'menulistNotActive'} `} onClick={onSelect}>การ์ดแต่งงาน</li>
+                            <li className={`menulist rounded-4 ps-4 py-2 ${onStep === 8 ? 'menulistActive' : 'menulistNotActive'} `} onClick={onSelect}>ของชำร่วย</li>
                         </ul>
                     </div>
                 </div>
