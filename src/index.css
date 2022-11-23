@@ -50,7 +50,7 @@ code {
 }
 .menulist{
   display: block;
-  cursor: pointer;
+  /* cursor: pointer; */
 
 }
 /* .menulist:hover {
@@ -63,7 +63,9 @@ code {
 .menulistNotActive {
   color: #8A9AA0;
 }
-
+img{
+  object-fit: cover;
+}
 .imgWedding {
   width: 100%;
   height: 40rem;

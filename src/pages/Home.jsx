@@ -34,12 +34,12 @@ function Home() {
                 <div className='m-5'>
                     <div className='row d-flex justify-content-center align-items-center '>
                         <div className="col-7 p-5">
-                            <h3>Lorem Ipsum</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac eros dictum, placerat risus ac, luctus urna. Proin vestibulum vulputate tellus eu hendrerit. Nam nec pellentesque justo, sed malesuada tortor.</p>
+                            <h3>Loveindeed The Wedding</h3>
+                            <p className='mt-3'>Love Indeed ถือเป็นหนึ่งในเวดดิ้งแพลนเนอร์มืออาชีพ ที่มีชื่อเสียงเป็นที่รู้จักในวงการมานาน ทั้งยังมีประสบการณ์ผ่านการจัดงานแต่งงานให้กับคู่รักมาแล้วมากมาย หลากหลายรูปแบบ สร้างความประทับใจและการจดจำในรูปแบบการทำงาน One Stop Service จุดเด่นของ Love Indeed คือ การตอบโจทย์ที่ลูกค้าต้องการในงบประมาณที่จับต้องได้ และได้มากกว่าที่จินตนาการไว้ในหลากหลายแง่มุม</p>
                         </div>
                         <div className='col-5 p-5'>
                             <div class="ratio video">
-                                <iframe src="https://www.youtube.com/embed/Jxj6DZJXGmQ" title="ตกหลุมรักซ้ำๆ (repeat) - MEAN [Lyric Visualizer]" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/accQX8cGDNA" title="Loveindeed The Wedding" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>

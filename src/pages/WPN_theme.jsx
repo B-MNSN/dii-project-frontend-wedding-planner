@@ -73,14 +73,11 @@ function WPN_theme(){
         getTransaction();
     },[]);
     // console.log(onStep)
-    const next = async (e) => {
-        console.log(tranid)
+    const next = async () => {
         try {
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
-                value: 3
-                
+            axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
+                value: 3    
             });
-            console.log(trans);
             
         } catch (error) {
             console.error(error);

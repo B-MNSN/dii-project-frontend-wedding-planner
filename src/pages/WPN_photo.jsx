@@ -10,13 +10,15 @@ import Loading from "./Loading";
 function WPN_photo(){
     const [modalShow, setModalShow] = useState(false);
     const [photo, setPhoto] = useState([]);
-    let {userid } = useParams();
+    let { userid } = useParams();
     const [user, setUser] = useState();
     const [token, setToken] = useState(localStorage.getItem("status"));
     const [user_id,setuser_id] = useState('');
     const [transaction, setTransaction] = useState();
     const [tranid, setTranid] = useState('');
     const [onStep,setOnStep] = useState('');
+    const [loading, setLoading] = useState(false);
+
 
     if(!token){
         window.location.href='/login'
@@ -25,6 +27,7 @@ function WPN_photo(){
     useEffect(() => {
         async function getPhoto(){
          try {
+            setLoading(false);
              const photo = await axios.get(
                 `http://localhost:4001/photo`
             );
@@ -32,6 +35,8 @@ function WPN_photo(){
 
          } catch (error) {
              console.error(error);
+         }finally{
+            setLoading(true);
          }
         };
         getPhoto();
@@ -75,13 +80,11 @@ function WPN_photo(){
     },[]);
 
     // console.log(userid)
-    const next = async (e) => {
+    const next = async () => {
         try {
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
+            axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
                 value: 7
-                
             });
-            console.log(trans);
             
         } catch (error) {
             console.error(error);
@@ -89,7 +92,7 @@ function WPN_photo(){
 
     };
 
-    if(!photo && !transaction) return <></>
+    // if(!photo && !transaction) return <></>
 
     return(
         <>
@@ -102,7 +105,7 @@ function WPN_photo(){
                             <h3 className='ms-5 mt-4'>ถ่ายรูป Pre-Wedding</h3>
                         </div>
                         {
-                            photo.length !== 0 ?
+                            loading ?
                             <div className='col d-flex flex-wrap ms-5'>
                                 {photo.map((photos) => (
                                     <Photo key={photos._id} photo={photos}/>

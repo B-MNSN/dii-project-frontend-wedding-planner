@@ -64,21 +64,21 @@ function ResultWeddingPlanner() {
     const checkOrg = () => {
       for(let i=0; i<oganize.length; i++){
         if(transaction.theme === oganize[i].organiz_theme && transaction.food === oganize[i].organiz_food && transaction.location === oganize[i].organiz_location && transaction.dress === oganize[i].organiz_dress && transaction.photo === oganize[i].organiz_photo && transaction.gift === oganize[i].organiz_gift && transaction.card === oganize[i].organiz_card){
-          // console.log(oganize[i]);
+          console.log(oganize[i]);
           arr.push(oganize[i]);
           setOrgName(arr);
 
         }
       } 
   }
-    if(transaction){
+    if(transaction && oganize){
       budget();
       checkOrg();
     }
-  },[transaction]);
+  },[transaction,oganize]);
 
 
-  // console.log(orgName)
+  console.log(orgName)
   
   if(!transaction ) return <></>
 

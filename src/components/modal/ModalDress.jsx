@@ -32,20 +32,18 @@ function ModalDress({ show, onHide, dressWedding }) {
         getTransaction();
     },[]);
 
-    const confirm = async (e) => {
-        // console.log(transaction)
+    const confirm = () => {
         try{
-            const transDress = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=dress`, {
+            axios.put(`http://localhost:4001/transaction/update/${tranid}?update=dress`, {
                 value: dressWedding.dress_name
                 
             });
-            console.log(transDress);
-
-            const transDressPrice = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=dress_price`, {
+            axios.put(`http://localhost:4001/transaction/update/${tranid}?update=dress_price`, {
                 value: dressWedding.dress_price
                 
-            });
-            console.log(transDressPrice);
+            }).then((response) => {
+                console.log(response);
+            })
         } 
         catch (error){
             console.error(error);

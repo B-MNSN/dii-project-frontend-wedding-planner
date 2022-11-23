@@ -33,8 +33,6 @@ function Navbar() {
         getUser();
   },[]);
 
-  console.log(user)
-
   if(!user) return <></>
 
   return (
@@ -53,7 +51,7 @@ function Navbar() {
               WEDDING PLANNER
             </a>
             <text className="mx-3 text-dark" onClick={() => setModalShow(true)}>
-              HOW TO
+              ABOUT ME
             </text>
           </div>
           <div>

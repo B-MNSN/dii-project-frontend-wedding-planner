@@ -74,14 +74,11 @@ function WPN_food(){
         getTransaction();
     },[]);
 
-    const next = async (e) => {
+    const next = () => {
         try {
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
+            axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
                 value: 4
-                
             });
-            console.log(trans);
-            
         } catch (error) {
             console.error(error);
         }

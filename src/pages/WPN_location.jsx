@@ -17,7 +17,7 @@ function WPN_location(){
     const [onStep,setOnStep] = useState('');
     const [transaction, setTransaction] = useState();
     const [tranid, setTranid] = useState('')
-
+    const [loading,setLoading] = useState(false);
     if(!token){
         window.location.href='/login'
     }
@@ -25,6 +25,7 @@ function WPN_location(){
     useEffect(() => {
         async function getLocation(){
          try {
+            setLoading(false)
             const location = await axios.get(
                 `http://localhost:4001/location`
             );
@@ -32,6 +33,9 @@ function WPN_location(){
 
          } catch (error) {
              console.error(error);
+         }finally{
+            setLoading(true)
+
          }
         };
         getLocation();
@@ -76,14 +80,12 @@ function WPN_location(){
         getTransaction();
     },[]);
 
-    const next = async (e) => {
+    const next = async () => {
         try {
             const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
-                value: 5
-                
+                value: 5 
             });
             console.log(trans);
-            
         } catch (error) {
             console.error(error);
         }
@@ -103,7 +105,7 @@ function WPN_location(){
                             <h3 className='ms-5 mt-4'>สถานที่</h3>
                         </div>
                         {
-                            location.length !== 0 ?
+                            loading ?
                             <div className='col d-flex flex-wrap ms-5'>
                                 {location.map((locations) => (
                                     <Location key={locations._id} location={locations}/>

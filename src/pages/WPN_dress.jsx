@@ -16,12 +16,13 @@ function WPN_dress(){
     const [user_id,setuser_id] = useState('');
     const [onStep,setOnStep] = useState('');
     const [transaction, setTransaction] = useState();
-    const [tranid, setTranid] = useState('')
+    const [tranid, setTranid] = useState([])
+    const [x,setx] = useState(true)
 
     if(!token){
         window.location.href='/login'
     }
-
+                  
     useEffect(() => {
         async function getDress(){
          try {
@@ -75,14 +76,12 @@ function WPN_dress(){
     },[]);
 
     // console.log(userid)
-    const next = async (e) => {
+    const next = async () => {
         try {
             const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
                 value: 6
-                
             });
             console.log(trans);
-            
         } catch (error) {
             console.error(error);
         }
@@ -113,10 +112,10 @@ function WPN_dress(){
                             </div>
                         }
                         <div className='d-flex justify-content-end'>
-                            <Link to={`/WPN_photo/${userid}`}>
+                            <Link to={`/WPN_photo/${user_id}`}>
                                 <button className='btnSkip border-0 rounded-2 text-light m-2 px-4 py-1' onClick={next}>Skip</button>
                             </Link>
-                            <Link to={`/WPN_photo/${userid}`}>
+                            <Link to={`/WPN_photo/${user_id}`}>
                                 <button className='btnNext border-0 rounded-2 text-light m-2 px-4 py-1' onClick={next}>Next</button>
                             </Link>
                             

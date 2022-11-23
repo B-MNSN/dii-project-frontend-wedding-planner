@@ -79,13 +79,11 @@ function WPN_card(){
 
     if(!card && !transaction) return <></>
     
-    const next = async (e) => {
+    const next = async () => {
         try {
-            const trans = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
-                value: 8
-                
+            axios.put(`http://localhost:4001/transaction/update/${tranid}?update=step`, {
+                value: 8              
             });
-            console.log(trans);
             
         } catch (error) {
             console.error(error);

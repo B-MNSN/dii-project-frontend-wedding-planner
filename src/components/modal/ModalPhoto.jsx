@@ -32,26 +32,25 @@ function ModalPhoto({ show, onHide, photo }) {
     },[]);
 
     // console.log(tranid);
-
-    const confirm = async (e) => {
-        // console.log(tranid)
+    const confirm = () => {
+        console.log(photo.photo_name);
+        console.log(photo.photo_price);
         try{
-            const transPhoto = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=photo`, {
+            axios.put(`http://localhost:4001/transaction/update/${tranid}?update=photo`, {
                 value: photo.photo_name
                 
             });
-            console.log(transPhoto);
-
-            const transPhotoPrice = await axios.put(`http://localhost:4001/transaction/update/${tranid}?update=photo_price`, {
+            axios.put(`http://localhost:4001/transaction/update/${tranid}?update=photo_price`, {
                 value: photo.photo_price
                 
-            });
-            console.log(transPhotoPrice);
+            }).then((response) => {
+                console.log(response);
+            })
         } 
         catch (error){
             console.error(error);
         }
-    };
+    }
 
     if(!photo) return <></>
 
